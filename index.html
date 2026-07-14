@@ -1,0 +1,3442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Understanding Kentucky's General Education Core | CPE</title>
+<meta name="description" content="A self-paced training from the Kentucky Council on Postsecondary Education on the Statewide General Education Core, transfer policy, and dual credit." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   1. DESIGN TOKENS
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* surfaces */
+  --bg: #fafbff;
+  --surface: #ffffff;
+  --surface-2: #f7f8fc;
+  --surface-3: #eef0f8;
+
+  /* borders */
+  --border: rgba(15, 23, 42, 0.06);
+  --border-strong: rgba(15, 23, 42, 0.12);
+
+  /* text */
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+
+  /* brand */
+  --brand-1: #1B4595;
+  --brand-2: #2D6CB9;
+  --brand-3: #DF6A38;
+  --brand-deep: #0F2A5C;
+
+  /* accents */
+  --coral: #DF6A38;
+  --coral-deep: #B8501C;
+  --amber: #f59e0b;
+  --emerald: #10b981;
+  --sky: #0ea5e9;
+  --brand-green: #7BA847;
+
+  /* tints */
+  --tint-purple: #E4ECF7;
+  --tint-blue: #dbeafe;
+  --tint-amber: #fef3c7;
+  --tint-emerald: #d1fae5;
+  --tint-rose: #FBE9D9;
+  --tint-indigo: #e0e7ff;
+
+  /* gradients */
+  --grad-primary: linear-gradient(135deg, #1B4595 0%, #2D6CB9 50%, #DF6A38 100%);
+  --grad-extended: linear-gradient(135deg, #1B4595, #2D6CB9 50%, #DF6A38);
+  --grad-hero: linear-gradient(135deg, #0F2A5C 0%, #1B4595 40%, #2D6CB9 70%, #DF6A38 100%);
+  --grad-soft-card: linear-gradient(135deg, var(--surface) 0%, var(--tint-purple) 100%);
+
+  /* shadows (violet-tinted) */
+  --shadow-subtle: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-standard: 0 4px 16px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-lifted: 0 12px 40px rgba(27, 69, 149, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-ring: 0 0 0 1px var(--brand-2), 0 12px 32px rgba(45, 108, 185, 0.18);
+
+  /* motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* layout */
+  --sidenav-w: 280px;
+  --topbar-h: 76px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   2. RESET + BASE
+   ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ambient background — fixed behind everything */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 900px 700px at 5% 0%, rgba(27, 69, 149, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 700px 600px at 95% 25%, rgba(123, 168, 71, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 800px 700px at 50% 100%, rgba(223, 106, 56, 0.06) 0%, transparent 50%);
+}
+
+a { color: var(--brand-1); text-decoration: none; transition: color 0.2s var(--ease); }
+a:hover { color: var(--brand-2); }
+
+h1, h2, h3, h4 { margin: 0; letter-spacing: -0.02em; line-height: 1.15; }
+p { margin: 0 0 1em; }
+
+/* ─────────────────────────────────────────────────────────────
+   3. UTILITY: ITALIC GRADIENT EMPHASIS
+   ───────────────────────────────────────────────────────────── */
+.serif-italic {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  background: var(--grad-extended);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.01em;
+}
+.serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+}
+.mono {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   4. NAME GATE (full-screen overlay)
+   ───────────────────────────────────────────────────────────── */
+.name-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+.name-gate.hidden { display: none; }
+.name-gate__inner {
+  width: 100%;
+  max-width: 620px;
+  position: relative;
+  z-index: 2;
+}
+.name-gate__logo {
+  height: 56px;
+  width: auto;
+  display: block;
+  margin: 0 auto 32px;
+}
+.name-gate__eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.name-gate__eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  animation: pulse 2.4s infinite;
+}
+.name-gate__title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.name-gate__subtitle {
+  font-size: 17px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.name-gate__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow-standard);
+}
+.name-gate__field { margin-bottom: 20px; }
+.name-gate__field:last-of-type { margin-bottom: 24px; }
+.name-gate__label {
+  display: block;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.name-gate__label .req { color: var(--coral-deep); }
+.name-gate__input {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: 'Geist', sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 14px;
+  transition: all 0.2s var(--ease);
+}
+.name-gate__input:focus {
+  outline: none;
+  border-color: var(--brand-2);
+  background: var(--surface);
+  box-shadow: 0 0 0 4px rgba(45, 108, 185, 0.12);
+}
+.name-gate__meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   5. PRIMARY BUTTON
+   ───────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: 'Geist', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background: var(--grad-primary);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  box-shadow: 0 4px 14px rgba(27, 69, 149, 0.30);
+  letter-spacing: -0.005em;
+  width: 100%;
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27, 69, 149, 0.40);
+}
+.btn-primary:disabled {
+  background: var(--surface-3);
+  color: var(--text-dim);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: 'Geist', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.btn-secondary:hover {
+  color: var(--coral-deep);
+  border-color: var(--coral);
+  background: var(--tint-rose);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   6. TOP BAR
+   ───────────────────────────────────────────────────────────── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--topbar-h);
+  background: rgba(250, 251, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 20px;
+}
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.topbar__logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+.topbar__title-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.topbar__eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.topbar__title {
+  font-family: 'Geist', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topbar__spacer { flex: 1; }
+.topbar__progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.topbar__progress-bar {
+  width: 140px;
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.topbar__progress-fill {
+  height: 100%;
+  background: var(--grad-extended);
+  border-radius: 100px;
+  width: 0%;
+  transition: width 0.5s var(--ease);
+}
+.topbar__progress-text {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  min-width: 32px;
+}
+.topbar__name-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: 'Geist', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brand-deep);
+  background: var(--tint-purple);
+  border-radius: 100px;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topbar__reset {
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   7. APP LAYOUT (sidenav + content)
+   ───────────────────────────────────────────────────────────── */
+.app-layout {
+  display: grid;
+  grid-template-columns: var(--sidenav-w) 1fr;
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sidenav {
+  position: sticky;
+  top: var(--topbar-h);
+  height: calc(100vh - var(--topbar-h));
+  overflow-y: auto;
+  padding: 36px 16px 36px 28px;
+  border-right: 1px solid var(--border);
+}
+.sidenav__label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sidenav__label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+}
+.sidenav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sidenav__item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  text-align: left;
+  width: 100%;
+  font-family: 'Geist', sans-serif;
+}
+.sidenav__item:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.sidenav__item.active {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 500;
+  box-shadow: var(--shadow-subtle);
+}
+.sidenav__item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--grad-primary);
+  box-shadow: 0 0 12px rgba(45, 108, 185, 0.4);
+}
+.sidenav__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface-3);
+  color: var(--text-muted);
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.3s var(--ease);
+}
+.sidenav__item.active .sidenav__num {
+  background: var(--grad-primary);
+  color: white;
+}
+.sidenav__item.completed .sidenav__num {
+  background: var(--emerald);
+  color: white;
+}
+.sidenav__item.completed .sidenav__num::after { content: '✓'; }
+.sidenav__item.completed .sidenav__num .num-text { display: none; }
+.sidenav__txt {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   8. CONTENT AREA + SECTIONS
+   ───────────────────────────────────────────────────────────── */
+.content {
+  padding: 64px 64px 96px;
+  min-width: 0;
+}
+.section {
+  max-width: 820px;
+  margin: 0 auto;
+  scroll-margin-top: calc(var(--topbar-h) + 24px);
+  display: none;
+}
+.section.is-active {
+  display: block;
+  animation: sectionEnter 0.5s var(--ease) both;
+}
+@keyframes sectionEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Page nav (Next / Previous bar at bottom of content) ─── */
+.page-nav {
+  max-width: 820px;
+  margin: 64px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.page-nav__btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px;
+  font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 500;
+  border: none; border-radius: 100px; cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.page-nav__prev {
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1.5px solid var(--border-strong);
+}
+.page-nav__prev:hover:not(:disabled) {
+  color: var(--text); border-color: var(--brand-2);
+  transform: translateX(-2px);
+}
+.page-nav__next {
+  color: white;
+  background: var(--grad-primary);
+  box-shadow: 0 4px 14px rgba(27, 69, 149, 0.25);
+}
+.page-nav__next:hover:not(:disabled) {
+  transform: translateX(2px);
+  box-shadow: 0 8px 24px rgba(27, 69, 149, 0.35);
+}
+.page-nav__btn:disabled, .page-nav__btn[hidden] { display: none; }
+.page-nav__meta {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+@media (max-width: 900px) {
+  .page-nav { margin-top: 40px; padding-top: 24px; }
+  .page-nav__btn { padding: 10px 16px; font-size: 13px; }
+}
+
+.section__eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand-2);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section__eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+}
+.section__title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(40px, 5.5vw, 64px);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  margin-bottom: 24px;
+}
+.section__lede {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  max-width: 680px;
+}
+
+.section__body { font-size: 16px; line-height: 1.7; color: var(--text); }
+.section__body p { margin-bottom: 1.1em; }
+.section__body strong { color: var(--text); font-weight: 600; }
+
+/* ─────────────────────────────────────────────────────────────
+   9. CARDS, CALLOUTS, REVEALS
+   ───────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-standard);
+  margin-bottom: 24px;
+  transition: all 0.3s var(--ease);
+}
+.card--tint-purple { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-purple) 100%); }
+.card--tint-blue   { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-blue) 100%); }
+.card--tint-amber  { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-amber) 100%); }
+.card--tint-emerald{ background: linear-gradient(135deg, var(--surface) 0%, var(--tint-emerald) 100%); }
+.card--tint-rose   { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-rose) 100%); }
+
+.callout {
+  display: flex;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  margin: 24px 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.callout__icon {
+  flex-shrink: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.callout__body { flex: 1; }
+.callout__body strong { display: block; margin-bottom: 4px; }
+.callout--insight { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-amber) 100%); border-color: rgba(245, 158, 11, 0.18); }
+.callout--policy  { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-blue) 100%); border-color: rgba(27, 69, 149, 0.18); }
+.callout--note    { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-purple) 100%); border-color: rgba(45, 108, 185, 0.18); }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+.stat-tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: var(--shadow-subtle);
+}
+.stat-tile__value {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: var(--grad-extended);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+.stat-tile__label {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* ─── poll widget (Section 1) ─── */
+.poll {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow-standard);
+  margin: 32px 0;
+}
+.poll__prompt {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+.poll__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.poll__option {
+  padding: 18px 16px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Geist Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.25s var(--ease);
+}
+.poll__option:hover:not(:disabled) {
+  border-color: var(--brand-2);
+  background: var(--surface);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-standard);
+}
+.poll__option.selected {
+  background: var(--surface);
+  border-color: var(--brand-2);
+  box-shadow: var(--shadow-ring);
+  color: var(--brand-deep);
+}
+.poll__option:disabled { cursor: default; }
+.poll__option:disabled:not(.selected) { opacity: 0.5; }
+
+.poll__reveal {
+  display: none;
+  margin-top: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, var(--surface-2) 0%, var(--tint-purple) 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  animation: revealIn 0.6s var(--ease) both;
+}
+.poll__reveal.shown { display: block; }
+@keyframes revealIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.poll__reveal-eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand-2);
+  margin-bottom: 10px;
+}
+.poll__reveal-headline {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 28px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.poll__reveal-body { font-size: 15.5px; line-height: 1.6; color: var(--text-muted); margin-bottom: 8px; }
+.poll__reveal-sources { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.02em; }
+
+/* ─── video frame (Section 1) ─── */
+.video-frame {
+  background: var(--grad-hero);
+  padding: 14px;
+  border-radius: 24px;
+  margin: 32px 0;
+  box-shadow: var(--shadow-lifted);
+}
+.video-frame__eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 4px 10px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.video-frame__embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+.video-frame__embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-frame__embed-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+.video-frame__embed-placeholder::before {
+  content: '▶';
+  font-size: 36px;
+  opacity: 0.7;
+}
+.video-frame__caption {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.95);
+  padding: 12px 10px 4px;
+  text-align: center;
+}
+
+/* ─── certification tier cards (Section 2) ─── */
+.tier-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 32px 0;
+}
+.tier {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 28px 28px 88px;
+  box-shadow: var(--shadow-subtle);
+  transition: all 0.3s var(--ease);
+}
+.tier:hover {
+  box-shadow: var(--shadow-lifted);
+  transform: translateY(-2px);
+}
+.tier__num {
+  position: absolute;
+  left: 24px;
+  top: 26px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+  box-shadow: 0 4px 14px rgba(27, 69, 149, 0.30);
+}
+.tier--core .tier__num { background: linear-gradient(135deg, #2D6CB9 0%, #DF6A38 100%); }
+.tier--full .tier__num { background: linear-gradient(135deg, #DF6A38 0%, #B8501C 100%); }
+.tier__label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand-2);
+  margin-bottom: 6px;
+}
+.tier__name {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.tier__name em { font-style: italic; background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tier__desc { font-size: 15px; line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+/* ─── institutions row ─── */
+.inst-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 4px;
+}
+.inst-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   10. SAVE INDICATOR (bottom-right)
+   ───────────────────────────────────────────────────────────── */
+.save-indicator {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--emerald);
+  box-shadow: var(--shadow-standard);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  pointer-events: none;
+}
+.save-indicator.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: savePulse 0.5s var(--ease);
+}
+@keyframes savePulse {
+  0%   { transform: scale(1) translateY(10px); opacity: 0; }
+  50%  { transform: scale(1.06) translateY(0); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.3); }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   14. CATEGORY CARDS (Section 3)
+   ───────────────────────────────────────────────────────────── */
+.category-grid { display: flex; flex-direction: column; gap: 12px; margin: 32px 0; }
+.category-card {
+  background: var(--surface); border: 1.5px solid var(--border-strong);
+  border-radius: 18px; overflow: hidden; transition: all 0.3s var(--ease);
+  box-shadow: var(--shadow-subtle);
+}
+.category-card.expanded { border-color: var(--brand-2); box-shadow: var(--shadow-lifted); }
+.category-card__head {
+  display: grid; grid-template-columns: auto 1fr auto auto auto;
+  align-items: center; gap: 14px; padding: 18px 22px; cursor: pointer;
+  background: transparent; border: none; width: 100%; text-align: left;
+  font-family: 'Geist', sans-serif; transition: background 0.2s var(--ease);
+}
+.category-card__head:hover { background: var(--surface-2); }
+.category-card__icon {
+  width: 36px; height: 36px; border-radius: 10px; background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center; color: white;
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px; flex-shrink: 0;
+}
+.category-card__name { font-size: 16.5px; font-weight: 600; color: var(--text); letter-spacing: -0.005em; line-height: 1.3; }
+.category-card__sub { font-size: 12.5px; color: var(--text-muted); font-weight: 400; margin-top: 2px; }
+.category-card__code {
+  padding: 4px 10px; background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 100px; font-family: 'Geist Mono', monospace; font-size: 11px;
+  font-weight: 500; color: var(--brand-2); letter-spacing: 0.05em; white-space: nowrap;
+}
+.category-card__hours { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em; white-space: nowrap; }
+.category-card__chevron {
+  width: 22px; height: 22px; border-radius: 50%; background: var(--surface-3);
+  display: flex; align-items: center; justify-content: center; font-size: 10px;
+  color: var(--text-muted); transition: transform 0.3s var(--ease);
+}
+.category-card.expanded .category-card__chevron { transform: rotate(180deg); background: var(--grad-primary); color: white; }
+.category-card__body { display: none; padding: 4px 22px 24px; border-top: 1px solid var(--border); margin-top: 4px; }
+.category-card.expanded .category-card__body { display: block; }
+.category-card__row { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.category-card__row:last-child { border-bottom: none; }
+.category-card__row-label {
+  flex-shrink: 0; width: 100px; font-family: 'Geist Mono', monospace;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--text-muted); padding-top: 3px;
+}
+.category-card__row-body { flex: 1; font-size: 14.5px; line-height: 1.55; color: var(--text); }
+.category-card__sample-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.category-card__sample-pill {
+  padding: 4px 10px; background: var(--tint-purple); border-radius: 100px;
+  font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500;
+  color: var(--brand-deep); letter-spacing: 0.02em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   15. QUIZ (Sections 4 & 5)
+   ───────────────────────────────────────────────────────────── */
+.quiz { display: flex; flex-direction: column; gap: 28px; margin: 32px 0; }
+.quiz__q { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 26px 28px; box-shadow: var(--shadow-subtle); }
+.quiz__q-num {
+  font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--brand-2); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.quiz__q-num::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--grad-primary); }
+.quiz__prompt {
+  font-family: 'Instrument Serif', serif; font-size: 23px; line-height: 1.25;
+  letter-spacing: -0.015em; margin-bottom: 20px; color: var(--text);
+}
+.quiz__prompt em { background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+.quiz__opts { display: flex; flex-direction: column; gap: 10px; }
+.quiz__opt {
+  display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px;
+  background: var(--surface-2); border: 1.5px solid var(--border-strong);
+  border-radius: 14px; cursor: pointer; text-align: left;
+  font-family: 'Geist', sans-serif; font-size: 14.5px; line-height: 1.5;
+  color: var(--text); transition: all 0.2s var(--ease); width: 100%;
+}
+.quiz__opt:hover:not(:disabled) { border-color: var(--brand-2); background: var(--surface); }
+.quiz__opt-dot {
+  flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border-strong); background: var(--surface);
+  margin-top: 2px; transition: all 0.2s var(--ease);
+}
+.quiz__opt.selected { background: var(--surface); border-color: var(--brand-2); box-shadow: var(--shadow-ring); }
+.quiz__opt.selected .quiz__opt-dot { border-color: var(--brand-2); background: var(--brand-2); box-shadow: inset 0 0 0 4px var(--surface); }
+.quiz__opt.correct { border-color: var(--emerald); background: var(--tint-emerald); }
+.quiz__opt.correct .quiz__opt-dot { background: var(--emerald); border-color: var(--emerald); box-shadow: inset 0 0 0 4px white; }
+.quiz__opt.incorrect { border-color: var(--coral-deep); background: var(--tint-rose); }
+.quiz__opt.incorrect .quiz__opt-dot { background: var(--coral-deep); border-color: var(--coral-deep); box-shadow: inset 0 0 0 4px white; }
+.quiz__opt:disabled { cursor: default; }
+.quiz__opt:disabled:not(.selected):not(.correct):not(.incorrect) { opacity: 0.5; }
+.quiz__feedback {
+  display: none; margin-top: 18px; padding: 18px 20px; border-radius: 14px;
+  font-size: 14.5px; line-height: 1.55; border: 1px solid var(--border);
+}
+.quiz__feedback.shown { display: block; animation: revealIn 0.4s var(--ease); }
+.quiz__feedback--correct { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-emerald) 100%); border-color: rgba(16, 185, 129, 0.25); }
+.quiz__feedback--incorrect { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-rose) 100%); border-color: rgba(184, 80, 28, 0.25); }
+.quiz__feedback-head { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px; font-weight: 500; }
+.quiz__feedback--correct .quiz__feedback-head { color: var(--emerald); }
+.quiz__feedback--incorrect .quiz__feedback-head { color: var(--coral-deep); }
+.quiz__feedback strong { font-weight: 600; }
+
+/* ─────────────────────────────────────────────────────────────
+   16. ACK BUTTON (used in S7 & elsewhere)
+   ───────────────────────────────────────────────────────────── */
+.ack-button-row { display: flex; justify-content: flex-end; margin-top: 32px; }
+.btn-ack {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+  font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 500;
+  color: white; background: var(--grad-primary); border: none; border-radius: 100px;
+  cursor: pointer; transition: all 0.25s var(--ease);
+  box-shadow: 0 4px 14px rgba(27, 69, 149, 0.25);
+}
+.btn-ack:hover:not(:disabled):not(.done) { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27, 69, 149, 0.35); }
+.btn-ack.done { background: var(--emerald); cursor: default; pointer-events: none; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25); }
+
+
+/* ─────────────────────────────────────────────────────────────
+   17. REFLECTION BOXES (Sections 6 & 8)
+   ───────────────────────────────────────────────────────────── */
+.reflection {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--tint-purple) 100%);
+  border: 1px solid rgba(45, 108, 185, 0.18);
+  border-radius: 20px; padding: 26px 28px; margin: 28px 0;
+  box-shadow: var(--shadow-subtle);
+}
+.reflection__label {
+  font-family: 'Geist Mono', monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--brand-2); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.reflection__label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--grad-primary); }
+.reflection__prompt {
+  font-family: 'Instrument Serif', serif; font-size: 21px;
+  line-height: 1.3; letter-spacing: -0.015em; margin-bottom: 16px;
+  color: var(--text);
+}
+.reflection__prompt em { background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+.reflection__textarea {
+  width: 100%; min-height: 120px; padding: 14px 16px;
+  font-family: 'Geist', sans-serif; font-size: 15px; line-height: 1.55;
+  color: var(--text); background: var(--surface);
+  border: 1.5px solid var(--border-strong); border-radius: 14px;
+  resize: vertical; transition: all 0.2s var(--ease); display: block;
+}
+.reflection__textarea:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 4px rgba(45, 108, 185, 0.10); }
+.reflection__meta {
+  margin-top: 10px; font-family: 'Geist Mono', monospace;
+  font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em;
+  display: flex; justify-content: space-between;
+}
+.reflection__meta-status { color: var(--text-dim); }
+.reflection__meta-status.done { color: var(--emerald); }
+
+/* ─────────────────────────────────────────────────────────────
+   18. PROFILE CARDS (Sections 6 & 8)
+   ───────────────────────────────────────────────────────────── */
+.profile-grid { display: flex; flex-direction: column; gap: 14px; margin: 28px 0; }
+.profile-mini {
+  display: grid; grid-template-columns: 44px 1fr;
+  gap: 16px; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px 22px;
+  box-shadow: var(--shadow-subtle);
+}
+.profile-mini__avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--grad-primary); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px;
+}
+.profile-mini__head {
+  font-family: 'Instrument Serif', serif; font-size: 21px;
+  line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 4px;
+}
+.profile-mini__head em { background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+.profile-mini__sub {
+  font-family: 'Geist Mono', monospace; font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--text-muted); margin-bottom: 10px;
+}
+.profile-mini__desc { font-size: 14.5px; line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+.profile-full {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 22px; padding: 28px 30px;
+  box-shadow: var(--shadow-standard); margin-bottom: 20px;
+}
+.profile-full__head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.profile-full__avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--grad-primary); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 24px;
+  flex-shrink: 0;
+}
+.profile-full__name { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.15; letter-spacing: -0.015em; }
+.profile-full__name em { background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+.profile-full__role { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-top: 4px; }
+.profile-full__attrs {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px 18px; background: var(--surface-2);
+  border-radius: 14px; margin-bottom: 14px;
+}
+.profile-full__attr { display: grid; grid-template-columns: 130px 1fr; gap: 14px; font-size: 14px; line-height: 1.45; }
+.profile-full__attr-label {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--text-muted); padding-top: 2px;
+}
+.profile-full__attr-value strong { font-weight: 600; }
+.profile-full__attr-value .tcode {
+  display: inline-block; padding: 1px 7px; border-radius: 6px;
+  background: var(--tint-purple); color: var(--brand-2);
+  font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500;
+  margin: 0 2px; letter-spacing: 0.04em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   19. TRANSCRIPT VISUAL (Section 7)
+   ───────────────────────────────────────────────────────────── */
+.transcript {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 22px 24px;
+  font-family: 'Geist Mono', monospace; font-size: 13px;
+  line-height: 1.6; box-shadow: var(--shadow-subtle); margin: 28px 0;
+  overflow-x: auto;
+}
+.transcript__head {
+  font-family: 'Geist', sans-serif; font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--text-muted); padding-bottom: 12px;
+  border-bottom: 1px solid var(--border); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.transcript__head::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--grad-primary); }
+.transcript__row {
+  display: grid; grid-template-columns: 1fr auto auto;
+  gap: 16px; align-items: center; padding: 6px 0;
+  color: var(--text-muted);
+  min-width: 360px;
+}
+.transcript__row strong { color: var(--text); font-weight: 500; }
+.transcript__code-pill {
+  display: inline-block; padding: 3px 8px; border-radius: 6px;
+  background: var(--tint-purple); color: var(--brand-2);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.04em; min-width: 44px; text-align: center;
+}
+.transcript__hrs { color: var(--text-dim); font-size: 12px; min-width: 32px; text-align: right; }
+.transcript__footer {
+  border-top: 1px solid var(--border); margin-top: 12px; padding-top: 12px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Geist', sans-serif; font-size: 13px; color: var(--text);
+}
+.transcript__status {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 12px; background: linear-gradient(135deg, var(--tint-emerald) 0%, var(--tint-purple) 100%);
+  border-radius: 100px; font-family: 'Geist Mono', monospace;
+  font-size: 11px; font-weight: 500; color: var(--brand-deep); letter-spacing: 0.05em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   20. ADVISING QUESTION CARDS (Section 7)
+   ───────────────────────────────────────────────────────────── */
+.advise-grid { display: flex; flex-direction: column; gap: 14px; margin: 28px 0; }
+.advise-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 22px 24px;
+  box-shadow: var(--shadow-subtle);
+  display: grid; grid-template-columns: 44px 1fr; gap: 16px;
+}
+.advise-card__num {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--grad-primary); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px;
+}
+.advise-card__q {
+  font-family: 'Instrument Serif', serif; font-size: 20px;
+  line-height: 1.25; letter-spacing: -0.015em; margin-bottom: 6px;
+}
+.advise-card__q em { background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+.advise-card__desc { font-size: 14.5px; line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+@media (max-width: 900px) {
+  .profile-full__attr { grid-template-columns: 100px 1fr; }
+  .reflection { padding: 22px; }
+  .transcript { font-size: 12px; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   11. SECTION PLACEHOLDERS (for Pass 2/3)
+   ───────────────────────────────────────────────────────────── */
+.section--placeholder { padding: 0; }
+.section--placeholder .placeholder-card {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.placeholder-card__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--tint-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-top: 2px;
+}
+.placeholder-card__body { flex: 1; }
+.placeholder-card__eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand-2);
+  margin-bottom: 6px;
+}
+.placeholder-card__title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.placeholder-card__title em { font-style: italic; background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.placeholder-card__desc { font-size: 14.5px; line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   21. QUICK GUIDE — topbar button, drawer, inline hint
+   ───────────────────────────────────────────────────────────── */
+.topbar__guide {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 500;
+  color: var(--brand-deep); background: var(--tint-purple);
+  border: 1px solid rgba(45, 108, 185, 0.18); border-radius: 100px;
+  cursor: pointer; transition: all 0.25s var(--ease);
+  flex-shrink: 0;
+}
+.topbar__guide:hover { background: var(--surface); box-shadow: var(--shadow-subtle); transform: translateY(-1px); }
+.topbar__guide-icon { font-size: 14px; line-height: 1; }
+
+.guide-overlay {
+  position: fixed; inset: 0; z-index: 199;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+}
+.guide-overlay.shown { opacity: 1; pointer-events: auto; }
+
+.guide-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 100%; max-width: 420px; z-index: 200;
+  background: var(--bg); border-left: 1px solid var(--border);
+  box-shadow: -8px 0 32px rgba(15, 23, 42, 0.12);
+  transform: translateX(100%);
+  transition: transform 0.35s var(--ease);
+  display: flex; flex-direction: column;
+}
+.guide-drawer.shown { transform: translateX(0); }
+
+.guide-drawer__head {
+  padding: 22px 24px 16px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+}
+.guide-drawer__title {
+  font-family: 'Instrument Serif', serif; font-size: 28px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.guide-drawer__title em { background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+.guide-drawer__sub { font-size: 13px; color: var(--text-muted); margin: 4px 0 0; line-height: 1.45; }
+.guide-drawer__close {
+  flex-shrink: 0; width: 34px; height: 34px;
+  border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 15px; transition: all 0.2s var(--ease);
+}
+.guide-drawer__close:hover { background: var(--surface); color: var(--text); transform: rotate(90deg); }
+.guide-drawer__body { flex: 1; overflow-y: auto; padding: 20px 24px 32px; }
+
+.guide-section { margin-bottom: 28px; }
+.guide-section:last-child { margin-bottom: 0; }
+.guide-section__label {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--brand-2); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.guide-section__label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--grad-primary); }
+
+.guide-cat, .guide-level {
+  display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+  padding: 12px 14px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 14px;
+  margin-bottom: 8px;
+}
+.guide-cat__icon, .guide-level__num {
+  width: 32px; height: 32px;
+  background: var(--grad-primary); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif; font-style: italic; font-size: 17px;
+}
+.guide-cat__icon { border-radius: 8px; }
+.guide-level__num { border-radius: 50%; }
+.guide-level--core .guide-level__num { background: linear-gradient(135deg, #2D6CB9 0%, #DF6A38 100%); }
+.guide-level--full .guide-level__num { background: linear-gradient(135deg, #DF6A38 0%, #B8501C 100%); }
+
+.guide-cat__name, .guide-level__name {
+  font-size: 14px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.005em; margin-bottom: 4px;
+}
+.guide-level__name em { background: var(--grad-extended); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; font-weight: 400; }
+.guide-cat__meta { display: flex; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; align-items: center; }
+.guide-cat__code {
+  padding: 2px 8px; background: var(--tint-purple); border-radius: 100px;
+  font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 500;
+  color: var(--brand-2); letter-spacing: 0.04em;
+}
+.guide-cat__hours { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.04em; }
+.guide-cat__desc, .guide-level__desc { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin: 0; }
+
+.guide-rules {
+  padding: 14px 16px; background: linear-gradient(135deg, var(--surface) 0%, var(--tint-amber) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.18); border-radius: 14px;
+}
+.guide-rules p { font-size: 13px; line-height: 1.55; color: var(--text); margin: 0 0 8px; }
+.guide-rules p:last-child { margin-bottom: 0; }
+.guide-rules strong { font-weight: 600; }
+
+.guide-hint {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; background: var(--tint-purple);
+  border: 1px solid rgba(45, 108, 185, 0.20); border-radius: 100px;
+  font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500;
+  color: var(--brand-deep); letter-spacing: 0.05em;
+  cursor: pointer; transition: all 0.2s var(--ease);
+  margin: 0 0 28px;
+}
+.guide-hint:hover { background: var(--surface); border-color: var(--brand-2); transform: translateY(-1px); box-shadow: var(--shadow-subtle); }
+
+
+.guide-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 20px;
+  background: var(--grad-primary); color: white;
+  border: none; border-radius: 100px; cursor: pointer;
+  font-family: 'Geist', sans-serif; font-size: 13.5px; font-weight: 500;
+  letter-spacing: -0.005em;
+  box-shadow: 0 10px 28px rgba(27, 69, 149, 0.30), 0 2px 8px rgba(15, 23, 42, 0.10);
+  transition: all 0.3s var(--ease);
+}
+.guide-fab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(27, 69, 149, 0.38), 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+.guide-fab:active { transform: translateY(-1px); }
+.guide-fab.hidden { opacity: 0; pointer-events: none; transform: translateY(20px); }
+.guide-fab__icon { font-size: 15px; line-height: 1; }
+
+@media (max-width: 900px) {
+  .guide-fab { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 13px; }
+}
+
+@media (max-width: 900px) {
+  .topbar__guide span:not(.topbar__guide-icon) { display: none; }
+  .topbar__guide { padding: 8px 10px; }
+  .guide-drawer { max-width: 100%; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   22. FINISH ACTIONS (Section 10)
+   ───────────────────────────────────────────────────────────── */
+.finish-summary {
+  padding: 14px 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  text-align: center;
+  margin: 40px 0 20px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  transition: all 0.35s var(--ease);
+}
+.finish-summary.ready {
+  background: linear-gradient(135deg, var(--tint-emerald) 0%, var(--tint-purple) 100%);
+  color: var(--emerald);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.finish-actions {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 20px 0;
+}
+.finish-btn {
+  display: grid; grid-template-columns: 52px 1fr; gap: 16px;
+  padding: 22px 24px;
+  background: var(--surface); border: 1.5px solid var(--border-strong);
+  border-radius: 20px; text-align: left; cursor: pointer;
+  font-family: 'Geist', sans-serif;
+  transition: all 0.3s var(--ease); align-items: center;
+  box-shadow: var(--shadow-subtle);
+}
+.finish-btn:hover:not(:disabled) {
+  border-color: var(--brand-2); box-shadow: var(--shadow-lifted);
+  transform: translateY(-3px);
+}
+.finish-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.finish-btn__icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--grad-primary); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.finish-btn__title {
+  font-size: 15.5px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.01em; margin-bottom: 3px;
+}
+.finish-btn__desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.4; }
+
+.section__close-note {
+  margin-top: 40px; padding: 22px 24px;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--tint-purple) 100%);
+  border: 1px solid rgba(45, 108, 185, 0.15);
+  border-radius: 18px;
+  font-size: 14.5px; line-height: 1.6; color: var(--text-muted);
+  text-align: center;
+}
+.section__close-note em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--brand-deep); font-size: 1.1em; }
+
+@media (max-width: 700px) {
+  .finish-actions { grid-template-columns: 1fr; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   12. RESPONSIVE
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  :root { --topbar-h: 64px; }
+  .topbar { padding: 0 16px; gap: 10px; }
+  .topbar__title-block { display: none; }
+  .topbar__logo { height: 32px; }
+  .topbar__progress-bar { width: 90px; }
+  .topbar__name-badge { display: none; }
+  .topbar__reset .btn-secondary { padding: 8px 14px; font-size: 12px; }
+
+  .app-layout { display: block; }
+
+  .sidenav {
+    position: sticky;
+    top: var(--topbar-h);
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    background: rgba(250, 251, 255, 0.92);
+    backdrop-filter: blur(20px);
+    z-index: 90;
+  }
+  .sidenav__label { display: none; }
+  .sidenav__list {
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .sidenav__item {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    white-space: nowrap;
+    max-width: 220px;
+  }
+  .sidenav__item.active { border-color: var(--brand-2); }
+  .sidenav__item.active::before { display: none; }
+  .sidenav__txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sidenav__num { width: 18px; height: 18px; font-size: 10px; }
+
+  .content { padding: 32px 20px 64px; }
+  .section { margin-bottom: 64px; }
+  .section__title { font-size: clamp(32px, 8vw, 44px); }
+  .section__lede { font-size: 17px; }
+  .card { padding: 24px; }
+  .tier { padding: 24px 24px 24px 76px; }
+  .tier__num { width: 38px; height: 38px; font-size: 18px; }
+
+  .name-gate { padding: 24px 16px; }
+  .name-gate__card { padding: 24px; }
+  .name-gate__title { font-size: clamp(32px, 9vw, 48px); }
+
+  .save-indicator { bottom: 16px; left: 16px; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   13. ANIMATION STAGGER
+   ───────────────────────────────────────────────────────────── */
+.stagger > * { opacity: 0; animation: staggerIn 0.6s var(--ease) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.15s; }
+.stagger > *:nth-child(3) { animation-delay: 0.25s; }
+.stagger > *:nth-child(4) { animation-delay: 0.35s; }
+.stagger > *:nth-child(5) { animation-delay: 0.45s; }
+.stagger > *:nth-child(6) { animation-delay: 0.55s; }
+@keyframes staggerIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- ambient background -->
+<div class="ambient-bg"></div>
+
+<!-- ─────────────────────────────────────────────────────────
+     NAME GATE — full screen overlay
+     ───────────────────────────────────────────────────────── -->
+<div class="name-gate" id="nameGate" role="dialog" aria-modal="true" aria-labelledby="nameGateTitle">
+  <div class="name-gate__inner">
+    <img class="name-gate__logo" src="data:image/png;base64,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" alt="Kentucky Council on Postsecondary Education" />
+    <div class="name-gate__eyebrow">Self-paced Training · ~50 minutes</div>
+    <h1 class="name-gate__title" id="nameGateTitle">
+      Understanding Kentucky's <span class="serif-italic">General Education Core</span>
+    </h1>
+    <p class="name-gate__subtitle">Building stronger pathways from high school to college. Please introduce yourself to begin.</p>
+
+    <div class="name-gate__card">
+      <div class="name-gate__field">
+        <label class="name-gate__label" for="userName">Full name <span class="req">required</span></label>
+        <input type="text" id="userName" class="name-gate__input" placeholder="e.g., Jordan Davis" autocomplete="name" />
+      </div>
+      <div class="name-gate__field">
+        <label class="name-gate__label" for="userOrg">Organization or school <span style="color:var(--text-dim);">(optional)</span></label>
+        <input type="text" id="userOrg" class="name-gate__input" placeholder="e.g., Fayette County Public Schools" autocomplete="organization" />
+      </div>
+      <button class="btn-primary" id="beginBtn" disabled>Begin training →</button>
+      <p class="name-gate__meta">Your progress is saved automatically in this browser. You can come back anytime to pick up where you left off.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────────────────────────────────────
+     TOP BAR
+     ───────────────────────────────────────────────────────── -->
+<header class="topbar">
+  <div class="topbar__brand">
+    <img class="topbar__logo" src="data:image/png;base64,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" alt="CPE" />
+    <div class="topbar__title-block">
+      <div class="topbar__eyebrow">Kentucky Council on Postsecondary Education</div>
+      <div class="topbar__title">Understanding Kentucky's General Education Core</div>
+    </div>
+  </div>
+  <div class="topbar__spacer"></div>
+  <div class="topbar__progress" aria-label="Training progress">
+    <div class="topbar__progress-bar"><div class="topbar__progress-fill" id="progressFill"></div></div>
+    <div class="topbar__progress-text" id="progressText">0%</div>
+  </div>
+  <div class="topbar__name-badge" id="nameBadge" style="display:none;"></div>
+  <div class="topbar__reset">
+    <button class="btn-secondary" id="resetBtn" title="Reset all progress">Reset</button>
+  </div>
+</header>
+
+<!-- ─────────────────────────────────────────────────────────
+     APP LAYOUT
+     ───────────────────────────────────────────────────────── -->
+<div class="app-layout">
+
+  <!-- ── SIDENAV ── -->
+  <nav class="sidenav" aria-label="Training sections">
+    <div class="sidenav__label">Module</div>
+    <ul class="sidenav__list" id="sideList"></ul>
+  </nav>
+
+  <!-- ── CONTENT ── -->
+  <main class="content">
+
+    <!-- ─────────────────────────────────────────────────────
+         SECTION 1 — Welcome & The Why
+         ───────────────────────────────────────────────────── -->
+    <section class="section" id="s1" data-section-num="1" data-section-title="Welcome &amp; The Why" data-completable="poll">
+      <div class="section__eyebrow">Section 1 · The Why</div>
+      <h2 class="section__title">
+        College credit should <span class="serif-italic">count</span> — wherever a student goes.
+      </h2>
+      <p class="section__lede">
+        Most students don't walk a straight line from starting college to finishing it. They transfer. They change majors. They start in one place and end up somewhere else. What matters is whether the credits they've already earned travel with them.
+      </p>
+
+      <!-- video placeholder -->
+      <div class="video-frame">
+        <div class="video-frame__eyebrow">▶ Watch first</div>
+        <div class="video-frame__embed">
+          <!-- TODO: REPLACE_VIDEO_ID with actual YouTube video ID, e.g. dQw4w9WgXcQ -->
+          <!-- When ready, swap the placeholder div for:
+               <iframe loading="lazy" src="https://www.youtube.com/embed/REPLACE_VIDEO_ID?rel=0&modestbranding=1" title="Introduction" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          -->
+          <div class="video-frame__embed-placeholder">Video coming soon</div>
+        </div>
+        <div class="video-frame__caption">A brief introduction from CPE on why the Gen Ed Core matters</div>
+      </div>
+
+      <div class="section__body">
+        <p>This training is for the adults who help students figure out their next step. The high school counselor sorting out who's taking college classes early. The college advisor looking at a transcript from another school. The teacher whose student just changed their major — for the third time. Your job isn't to memorize policy. It's to know enough about how Kentucky's college credit system works that the next student you talk to walks away with a clearer plan than they walked in with.</p>
+        <p>Before we get into how the system works, a quick gut-check.</p>
+      </div>
+
+      <!-- POLL -->
+      <div class="poll" id="pollOpening">
+        <div class="poll__prompt">What percentage of college students transfer or change their major at least once?</div>
+        <div class="poll__options" id="pollOptions">
+          <button class="poll__option" data-poll="a">About 10%</button>
+          <button class="poll__option" data-poll="b">About 25%</button>
+          <button class="poll__option" data-poll="c">About 35%</button>
+          <button class="poll__option" data-poll="d">More than 50%</button>
+        </div>
+        <div class="poll__reveal" id="pollReveal">
+          <div class="poll__reveal-eyebrow">The data</div>
+          <div class="poll__reveal-headline">
+            About <span class="serif-italic">38%</span> transfer at least once. About <span class="serif-italic">one in three</span> change their major.
+          </div>
+          <p class="poll__reveal-body">According to the National Student Clearinghouse, about 38% of students who start college will move to a different school at least once within six years. Separately, federal data shows about one in three bachelor's-degree students change their major within their first three years. This isn't unusual — it's how most students actually move through college.</p>
+          <p class="poll__reveal-sources">National Student Clearinghouse Research Center, <em>Transfer & Mobility</em> · NCES, <em>Beginning Postsecondary Students Longitudinal Study (BPS:12/14)</em></p>
+        </div>
+      </div>
+
+      <div class="section__body">
+        <p>When students move — between schools, between majors, sometimes both — the credits they've already earned are either an asset or a problem. That's the problem Kentucky's <em>Statewide General Education Core</em> is designed to solve. The next nine sections walk through what it is, how it works, and how you can use it in your conversations with students.</p>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon">📋</div>
+        <div class="callout__body">
+          <strong>By the end of this training</strong>
+          You'll be able to explain what the Gen Ed Core is and how it lets credits move between Kentucky's public colleges. You'll know the five categories and what kinds of classes count for each one. You'll be able to read the three levels of completion that show up on a college transcript. You'll see how the Gen Ed Core makes dual credit a smart choice for a lot of students. And you'll work through two real student situations to tie it all together.
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         SECTION 2 — Statewide Gen Ed Core & Transfer Agreement
+         ───────────────────────────────────────────────────── -->
+    <section class="section" id="s2" data-section-num="2" data-section-title="The Statewide Gen Ed Core" data-completable="view">
+      <div class="section__eyebrow">Section 2 · The Framework</div>
+      <h2 class="section__title">
+        Nine colleges. <span class="serif-italic">One promise.</span> Credits that travel.
+      </h2>
+      <p class="section__lede">
+        Kentucky's Statewide General Education Core is a deal that nine of the state's public colleges and universities made with each other. They agreed on a shared set of intro classes — and promised those classes will count if a student moves from one school to another.
+      </p>
+
+      <div class="section__body">
+        <p>This isn't a handshake deal — it's required by Kentucky law. The current version of the Gen Ed Core has been in effect since the fall of 2012, and the rules apply to every public college and university in the state.</p>
+
+        <p>Nine public colleges and universities take part:</p>
+        <div class="inst-list">
+          <span class="inst-chip">EKU</span>
+          <span class="inst-chip">KCTCS</span>
+          <span class="inst-chip">KSU</span>
+          <span class="inst-chip">Morehead State</span>
+          <span class="inst-chip">Murray State</span>
+          <span class="inst-chip">NKU</span>
+          <span class="inst-chip">UK</span>
+          <span class="inst-chip">UofL</span>
+          <span class="inst-chip">WKU</span>
+        </div>
+
+        <p style="margin-top:24px;">Here's what they agreed to do. First, they organized intro classes into <strong>five subject categories</strong>: communication (writing and speaking), math and statistics, sciences, social sciences (like psychology, sociology, and history), and arts and humanities. Second, they wrote down the <strong>skills students should walk away with</strong> from classes in each category. Third — and this is the important one — they promised that <strong>if a student takes a class at one of these nine schools that meets those skills, all the others will count it</strong> as if the student had taken their version.</p>
+
+        <p>The important part to know: the agreement pays attention to <em>what students learn</em>, not to what the class is called. A new school isn't checking whether your old school's "ENG 101" lines up with its own "ENG 101." It's checking whether the student walked out with the writing skills the policy expects. That's how transfer works this smoothly across all nine schools.</p>
+      </div>
+
+      <div class="callout callout--policy">
+        <div class="callout__icon">📜</div>
+        <div class="callout__body">
+          <strong>The guarantee, in one sentence</strong>
+          If a student finishes the Gen Ed Core at any of these nine schools, every other school in the agreement will accept it as having met their general education requirements too. The new school might still have a few of its own extras to add on top — but the core travels.
+        </div>
+      </div>
+
+      <!-- ── CERTIFICATION LEVELS ── -->
+      <h3 class="serif" style="font-size:34px; line-height:1.1; letter-spacing:-0.025em; margin: 56px 0 12px;">
+        Three <span class="serif-italic">levels of completion</span>
+      </h3>
+      <p class="section__lede" style="font-size:17px; margin-bottom:24px;">
+        When a student takes Gen Ed Core classes, those classes show up on their college transcript at one of three levels — depending on how much they've finished. Knowing which level a student has reached tells you exactly how much of their general education will move with them to a new school.
+      </p>
+
+      <div class="tier-stack stagger">
+        <div class="tier tier--category">
+          <div class="tier__num">1</div>
+          <div class="tier__label">Level One</div>
+          <div class="tier__name"><em>Category</em> Certified</div>
+          <p class="tier__desc">The student has finished some categories — at least one, but not all five. The categories they finished will transfer. They'll need to complete the rest at their new school.</p>
+        </div>
+        <div class="tier tier--core">
+          <div class="tier__num">2</div>
+          <div class="tier__label">Level Two</div>
+          <div class="tier__name"><em>Core</em> Certified</div>
+          <p class="tier__desc">The student has finished <em>all five</em> categories — at least 30 credit hours total, with no class counted twice. The whole Gen Ed Core transfers. The new school can only ask them to add its own specific extras, if it has any.</p>
+        </div>
+        <div class="tier tier--full">
+          <div class="tier__num">3</div>
+          <div class="tier__label">Level Three</div>
+          <div class="tier__name"><em>Fully</em> Certified</div>
+          <p class="tier__desc">The student has finished the Gen Ed Core <em>plus</em> any extra general education classes their school required on top. Their full general education program moves with them — nothing left to repeat.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--insight">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <strong>Why this matters when you're talking to students</strong>
+          Two transcripts can look almost identical at first glance and mean completely different things for transfer. A student who's "Category Certified" in three out of five categories has a very different next step than one who's "Core Certified." If you only have time to look at one thing on a transfer transcript, look at the level of completion.
+        </div>
+      </div>
+
+      <div class="section__body" style="margin-top:24px;">
+        <p>One last piece of good news. If a student graduates from a KCTCS school (a community or technical college) with an <strong>Associate's degree (AA or AS)</strong> through one of the approved transfer programs, every Kentucky public university treats them as having finished <em>all</em> general education requirements — and they enter the new school as juniors, not freshmen. The Gen Ed Core is the foundation that makes that promise possible.</p>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         SECTIONS 3–10 — PLACEHOLDERS (Pass 2/3)
+         ───────────────────────────────────────────────────── -->
+    <section class="section" id="s3" data-section-num="3" data-section-title="The Five Categories" data-completable="manual">
+      <div class="section__eyebrow">Section 3 · The Categories</div>
+      <h2 class="section__title">Five categories. <span class="serif-italic">What's in each one?</span></h2>
+      <p class="section__lede">Before we dive into what's in each category, a quick word about why having five matters in the first place.</p>
+
+      <div class="section__body">
+        <h3 class="serif" style="font-size:30px; line-height:1.15; letter-spacing:-0.02em; margin: 16px 0 14px;">
+          But first &mdash; <span class="serif-italic">why</span> five categories?
+        </h3>
+
+        <p>Students sometimes ask straight out: <em>"Why do I have to take this if I'm going to be a nurse?"</em> The truth is that no one's life or career stays neatly inside one category. A nurse who never thought through ethics will struggle with end-of-life conversations. An engineer who never learned to write clearly will struggle to lead a team. A teacher who never studied history will have a hard time making sense of what's happening in their own classroom.</p>
+
+        <p>The five categories exist so students get exposed to <strong>different ways of thinking</strong> before they pick one path &mdash; and meet ideas, perspectives, and people they never would have gone looking for on their own. A student sure they wanted to be an accountant takes Intro to Psychology and gets fascinated by how people make decisions. A student certain about engineering takes a literature class and realizes they're a better writer than they thought. A student in early childhood education takes a science class and discovers a love for biology that changes how they'll teach. Those moments matter. They shape majors, careers, and the kind of adult a student turns into.</p>
+
+        <p>So when a student asks you about all this, here's what's worth saying: <strong>the Gen Ed Core isn't a tax on their time. It's the part of college where they get to find out who they are.</strong></p>
+      </div>
+
+      <h3 class="serif" style="font-size:30px; line-height:1.15; letter-spacing:-0.02em; margin: 48px 0 6px;">
+        Now &mdash; the <span class="serif-italic">five categories</span>
+      </h3>
+      <p class="section__lede" style="font-size:16px; margin-bottom:24px;">Click any card to open it up. You'll see what kinds of classes count, what students walk away knowing, the code that shows up on a transcript, and how many credits the category needs.</p>
+
+      <div class="category-grid">
+
+        <!-- 1. Communication -->
+        <div class="category-card" data-cat="comm">
+          <button class="category-card__head">
+            <div class="category-card__icon">C</div>
+            <div>
+              <div class="category-card__name">Communication</div>
+              <div class="category-card__sub">Writing and speaking</div>
+            </div>
+            <span class="category-card__code">WC + OC</span>
+            <span class="category-card__hours">6–9 hours</span>
+            <span class="category-card__chevron">▼</span>
+          </button>
+          <div class="category-card__body">
+            <div class="category-card__row">
+              <div class="category-card__row-label">What students learn</div>
+              <div class="category-card__row-body">How to write clearly for different audiences, how to research and cite sources, how to listen and speak with confidence in front of a group, and how to build a fair argument.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Sample classes</div>
+              <div class="category-card__row-body">
+                <div class="category-card__sample-list">
+                  <span class="category-card__sample-pill">English Composition I</span>
+                  <span class="category-card__sample-pill">English Composition II</span>
+                  <span class="category-card__sample-pill">Public Speaking</span>
+                  <span class="category-card__sample-pill">Business Communication</span>
+                </div>
+              </div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">The codes</div>
+              <div class="category-card__row-body"><strong>WC</strong> for written communication, <strong>OC</strong> for oral communication. Most students take at least one of each.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Why it matters</div>
+              <div class="category-card__row-body">Every career relies on writing and speaking — from nurses charting patient notes to engineers explaining a design to a client. This is the most universal category.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Quantitative Reasoning -->
+        <div class="category-card" data-cat="qr">
+          <button class="category-card__head">
+            <div class="category-card__icon">Q</div>
+            <div>
+              <div class="category-card__name">Quantitative Reasoning</div>
+              <div class="category-card__sub">Math and statistics</div>
+            </div>
+            <span class="category-card__code">QR</span>
+            <span class="category-card__hours">3–6 hours</span>
+            <span class="category-card__chevron">▼</span>
+          </button>
+          <div class="category-card__body">
+            <div class="category-card__row">
+              <div class="category-card__row-label">What students learn</div>
+              <div class="category-card__row-body">How to read information shown in numbers, charts, and graphs. How to do the math a problem actually needs. How to spot when an answer looks off and ask why.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Sample classes</div>
+              <div class="category-card__row-body">
+                <div class="category-card__sample-list">
+                  <span class="category-card__sample-pill">College Algebra</span>
+                  <span class="category-card__sample-pill">Statistics</span>
+                  <span class="category-card__sample-pill">Quantitative Reasoning</span>
+                  <span class="category-card__sample-pill">Finite Math</span>
+                </div>
+              </div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">The code</div>
+              <div class="category-card__row-body"><strong>QR</strong>. Students usually finish this category with one course.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Why it matters</div>
+              <div class="category-card__row-body">Healthcare runs on math (dosages, vitals, lab values). So do business, technology, engineering, and any career that involves a budget — which is most of them.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Natural Sciences -->
+        <div class="category-card" data-cat="ns">
+          <button class="category-card__head">
+            <div class="category-card__icon">N</div>
+            <div>
+              <div class="category-card__name">Natural Sciences</div>
+              <div class="category-card__sub">Hands-on science, with a lab</div>
+            </div>
+            <span class="category-card__code">NS · SL</span>
+            <span class="category-card__hours">3–7 hours</span>
+            <span class="category-card__chevron">▼</span>
+          </button>
+          <div class="category-card__body">
+            <div class="category-card__row">
+              <div class="category-card__row-label">What students learn</div>
+              <div class="category-card__row-body">How scientists actually answer questions — designing experiments, collecting data, making predictions, and connecting science to real issues people care about.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Sample classes</div>
+              <div class="category-card__row-body">
+                <div class="category-card__sample-list">
+                  <span class="category-card__sample-pill">Biology with Lab</span>
+                  <span class="category-card__sample-pill">Chemistry with Lab</span>
+                  <span class="category-card__sample-pill">Physics with Lab</span>
+                  <span class="category-card__sample-pill">Geology with Lab</span>
+                  <span class="category-card__sample-pill">Astronomy with Lab</span>
+                </div>
+              </div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">The codes</div>
+              <div class="category-card__row-body"><strong>NS</strong> for natural sciences. <strong>SL</strong> marks the required hands-on lab. Every student needs lab-based science somewhere in this category.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Why it matters</div>
+              <div class="category-card__row-body">Nursing, pre-med, engineering, agriculture, environmental science, and teaching all build on the science a student does here.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Social & Behavioral Sciences -->
+        <div class="category-card" data-cat="sb">
+          <button class="category-card__head">
+            <div class="category-card__icon">S</div>
+            <div>
+              <div class="category-card__name">Social &amp; Behavioral Sciences</div>
+              <div class="category-card__sub">How people and societies work</div>
+            </div>
+            <span class="category-card__code">SB</span>
+            <span class="category-card__hours">6–9 hours</span>
+            <span class="category-card__chevron">▼</span>
+          </button>
+          <div class="category-card__body">
+            <div class="category-card__row">
+              <div class="category-card__row-label">What students learn</div>
+              <div class="category-card__row-body">How researchers study human behavior, communities, and culture. How to apply that to real problems — and how to talk and write about people fairly and accurately.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Sample classes</div>
+              <div class="category-card__row-body">
+                <div class="category-card__sample-list">
+                  <span class="category-card__sample-pill">Intro to Psychology</span>
+                  <span class="category-card__sample-pill">Sociology</span>
+                  <span class="category-card__sample-pill">Anthropology</span>
+                  <span class="category-card__sample-pill">Economics</span>
+                  <span class="category-card__sample-pill">Political Science</span>
+                </div>
+              </div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">The code</div>
+              <div class="category-card__row-body"><strong>SB</strong>. Students need at least two classes here, and they must come from different subjects (you can't do two psychology classes and call it done).</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Why it matters</div>
+              <div class="category-card__row-body">Teaching, social work, healthcare, business, law, and government all start with understanding how people and groups work.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Arts & Humanities -->
+        <div class="category-card" data-cat="ah">
+          <button class="category-card__head">
+            <div class="category-card__icon">A</div>
+            <div>
+              <div class="category-card__name">Arts &amp; Humanities</div>
+              <div class="category-card__sub">History, ideas, art, and language</div>
+            </div>
+            <span class="category-card__code">AH</span>
+            <span class="category-card__hours">6–9 hours</span>
+            <span class="category-card__chevron">▼</span>
+          </button>
+          <div class="category-card__body">
+            <div class="category-card__row">
+              <div class="category-card__row-label">What students learn</div>
+              <div class="category-card__row-body">How history shapes the present. How to tell strong arguments and reliable sources from weak ones. How creative work — art, music, literature — reflects and shapes the culture around it.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Sample classes</div>
+              <div class="category-card__row-body">
+                <div class="category-card__sample-list">
+                  <span class="category-card__sample-pill">U.S. History</span>
+                  <span class="category-card__sample-pill">World Literature</span>
+                  <span class="category-card__sample-pill">Art Appreciation</span>
+                  <span class="category-card__sample-pill">Music Appreciation</span>
+                  <span class="category-card__sample-pill">Philosophy</span>
+                  <span class="category-card__sample-pill">Foreign Language</span>
+                </div>
+              </div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">The code</div>
+              <div class="category-card__row-body"><strong>AH</strong>. Students need at least two classes here. Foreign language can count.</div>
+            </div>
+            <div class="category-card__row">
+              <div class="category-card__row-label">Why it matters</div>
+              <div class="category-card__row-body">Communications, education, design, law, ministry, public service — careers that depend on thinking critically and writing well — are built on this foundation.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout callout--insight">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <strong>Pro tip on transcript codes</strong>
+          Those two-letter codes (WC, OC, QR, NS, SL, SB, AH) are the same on every Kentucky public college transcript. Once a student has them next to a class, that class counts statewide.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s4" data-section-num="4" data-section-title="Knowledge Check #1" data-completable="manual">
+      <div class="section__eyebrow">Section 4 · Knowledge Check</div>
+      <h2 class="section__title">Quick <span class="serif-italic">check</span>: where does each class belong?</h2>
+      <p class="section__lede">Five common college classes. For each one, pick the Gen Ed Core category it belongs to. Pick carefully — you can't change your answer.</p>
+      <button class="guide-hint" type="button">📋 Open the Quick Guide for a refresher</button>
+
+      <div class="quiz" data-quiz="s4">
+
+        <div class="quiz__q" data-q="q1" data-correct="a">
+          <div class="quiz__q-num">Question 1 of 5</div>
+          <div class="quiz__prompt">Where does <em>Public Speaking</em> fit?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Quantitative Reasoning</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">Public Speaking is a classic <strong>Communication</strong> class — specifically the oral communication (OC) side of the category.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q2" data-correct="a">
+          <div class="quiz__q-num">Question 2 of 5</div>
+          <div class="quiz__prompt">Where does <em>General Psychology</em> fit?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Natural Sciences</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">Psychology studies how people think and behave — that puts it in <strong>Social &amp; Behavioral Sciences</strong>. Common mix-up: psychology has "science" in its methods but it's not a Natural Science here.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q3" data-correct="a">
+          <div class="quiz__q-num">Question 3 of 5</div>
+          <div class="quiz__prompt">Where does <em>College Algebra</em> fit?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Quantitative Reasoning</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Natural Sciences</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">College Algebra is <strong>Quantitative Reasoning</strong> (QR). So are Statistics, Finite Math, and most named "math" courses at this level.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q4" data-correct="a">
+          <div class="quiz__q-num">Question 4 of 5</div>
+          <div class="quiz__prompt">Where does <em>Introduction to Philosophy</em> fit?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Quantitative Reasoning</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">Philosophy is part of the <strong>Arts &amp; Humanities</strong> tradition — it shares a category with history, literature, art, and music.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q5" data-correct="a">
+          <div class="quiz__q-num">Question 5 of 5</div>
+          <div class="quiz__prompt">Where does <em>Biology with Lab</em> fit?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Natural Sciences</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Quantitative Reasoning</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">Biology with Lab is <strong>Natural Sciences</strong>. The "with Lab" part is the SL code — the hands-on requirement built into this category.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="s5" data-section-num="5" data-section-title="Gen Ed &amp; Career Goals" data-completable="manual">
+      <div class="section__eyebrow">Section 5 · Career Alignment</div>
+      <h2 class="section__title">Five careers. <span class="serif-italic">Five foundations.</span></h2>
+      <p class="section__lede">When a student picks a career path, every Gen Ed Core category contributes — but one usually does the most heavy lifting. Match each career to the category that gives the strongest foundation.</p>
+      <button class="guide-hint" type="button">📋 Open the Quick Guide for a refresher</button>
+
+      <div class="callout callout--note">
+        <div class="callout__icon">📋</div>
+        <div class="callout__body">
+          <strong>A note before you start</strong>
+          Every category matters for every career. The point of this activity isn't to rank them — it's to notice the strongest fit so you can help students see why a Gen Ed class isn't just a box to check.
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="s5">
+
+        <div class="quiz__q" data-q="q1" data-correct="a">
+          <div class="quiz__q-num">Question 1 of 5</div>
+          <div class="quiz__prompt">A student wants to become a <em>nurse</em>. Which category is the foundation?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Natural Sciences (Bio + Chem)</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">All five matter for nursing — communication for patient care, math for dosages, psychology for behavior, humanities for ethics. But <strong>Natural Sciences</strong> is the foundation. Bio and chem set up Anatomy &amp; Physiology, Microbiology, and the rest of the nursing prerequisites.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q2" data-correct="a">
+          <div class="quiz__q-num">Question 2 of 5</div>
+          <div class="quiz__prompt">A student wants to <em>start a small business</em>. Which category does the most work?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Quantitative Reasoning</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Natural Sciences</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">Communication and social sciences are huge for any entrepreneur — selling, hiring, managing people. But the daily reality of a small business is numbers: pricing, taxes, cash flow, payroll, margins. <strong>Quantitative Reasoning</strong> is the foundation that keeps the business alive.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q3" data-correct="a">
+          <div class="quiz__q-num">Question 3 of 5</div>
+          <div class="quiz__prompt">A student wants to be an <em>elementary school teacher</em>. Where do they spend the most time?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Quantitative Reasoning</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">Teaching is built on understanding how children grow, learn, and behave. That puts <strong>Social &amp; Behavioral Sciences</strong> at the heart of teacher prep — developmental psychology, educational psychology, and child development all live in this category.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q4" data-correct="a">
+          <div class="quiz__q-num">Question 4 of 5</div>
+          <div class="quiz__prompt">A student wants to be a <em>journalist or content creator</em>. Which category is the foundation?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Natural Sciences</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body">Strong writing is the heart of journalism and content work, and <strong>Communication</strong> gives students the writing reps. Arts &amp; humanities builds the analytical depth, and social sciences give them the context — but it starts with writing.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q5" data-correct="a">
+          <div class="quiz__q-num">Question 5 of 5</div>
+          <div class="quiz__prompt">A student dreams of being a <em>historian or museum curator</em>. Which category is the foundation?</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Arts &amp; Humanities</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Social &amp; Behavioral Sciences</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Communication</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Natural Sciences</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body"><strong>Arts &amp; Humanities</strong> is home to history, literature, philosophy, and the methods used to study them. Museums, historical societies, publishing houses, and cultural institutions all run on humanities graduates.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="s6" data-section-num="6" data-section-title="Gen Ed Core + Dual Credit" data-completable="manual">
+      <div class="section__eyebrow">Section 6 · Dual Credit</div>
+      <h2 class="section__title">Gen Ed Core meets <span class="serif-italic">dual credit</span>.</h2>
+      <p class="section__lede">Dual credit just means a college class a student takes while they're still in high school. They earn high school credit and college credit at the same time. And when that class is part of the Gen Ed Core, it also counts everywhere in Kentucky — not just at the school where they earned it.</p>
+
+      <div class="section__body">
+        <p>Say a student takes College Algebra through dual credit at their local KCTCS campus and gets the QR code on their transcript. Every Kentucky public university — UK, UofL, WKU, Murray, all of them — will count that class exactly the same as if the student had taken it on their own campus.</p>
+
+        <p>That means a student's dual credit choices don't lock them into one school. The credit travels.</p>
+      </div>
+
+      <h3 class="serif" style="font-size:30px; line-height:1.15; letter-spacing:-0.02em; margin: 48px 0 8px;">
+        Who <span class="serif-italic">benefits most</span>
+      </h3>
+      <p class="section__lede" style="font-size:16px; margin-bottom:20px;">Dual credit through the Gen Ed Core is especially valuable for three kinds of students:</p>
+
+      <div class="profile-grid">
+
+        <div class="profile-mini">
+          <div class="profile-mini__avatar">U</div>
+          <div>
+            <div class="profile-mini__head">The <em>undecided</em> student</div>
+            <div class="profile-mini__sub">Still figuring out the plan</div>
+            <p class="profile-mini__desc">They're not sure where they'll go, what they'll major in, or whether they'll start at a two-year or a four-year school. Gen Ed Core dual credit gives them a foundation that works anywhere — no doors close while they're deciding.</p>
+          </div>
+        </div>
+
+        <div class="profile-mini">
+          <div class="profile-mini__avatar">T</div>
+          <div>
+            <div class="profile-mini__head">The future <em>transfer</em></div>
+            <div class="profile-mini__sub">Planning to move at some point</div>
+            <p class="profile-mini__desc">They might start at a community college and finish at a university, or start in one program and switch. Gen Ed Core travels with them — they don't end up retaking what they've already done.</p>
+          </div>
+        </div>
+
+        <div class="profile-mini">
+          <div class="profile-mini__avatar">W</div>
+          <div>
+            <div class="profile-mini__head">The student <em>weighing options</em></div>
+            <div class="profile-mini__sub">Comparing schools and programs</div>
+            <p class="profile-mini__desc">They're looking at two or three Kentucky schools and trying to figure out which is the best fit. Gen Ed Core dual credit keeps every option open while they tour campuses and run the numbers.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout callout--policy">
+        <div class="callout__icon">📜</div>
+        <div class="callout__body">
+          <strong>The policy is explicit about this</strong>
+          The Gen Ed Core agreement specifically covers dual credit: when a student earns college credit while still in high school, those classes get checked against the same skills — and they transfer the same way as any other Gen Ed Core class.
+        </div>
+      </div>
+
+      <div class="reflection" data-reflection="s6">
+        <div class="reflection__label">Reflection · this saves to your action plan</div>
+        <div class="reflection__prompt">Think of one student you're advising right now. How might the <em>Gen Ed Core</em> change the conversation you have with them about which classes to take next?</div>
+        <textarea class="reflection__textarea" id="reflection_s6" placeholder="A few sentences is plenty. There are no wrong answers — this is for you."></textarea>
+        <div class="reflection__meta">
+          <span class="reflection__meta-status" id="reflection_s6_status">Start typing to mark this section complete</span>
+          <span id="reflection_s6_count">0 characters</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s7" data-section-num="7" data-section-title="Postsecondary Advising" data-completable="manual">
+      <div class="section__eyebrow">Section 7 · Advising</div>
+      <h2 class="section__title">Three <span class="serif-italic">questions</span>, every conversation.</h2>
+      <p class="section__lede">When a student asks you about a class — any class, at any time — these three questions are the framework. Walking through them out loud with the student is half the work.</p>
+      <button class="guide-hint" type="button">📋 Open the Quick Guide for a refresher</button>
+
+      <div class="advise-grid">
+        <div class="advise-card">
+          <div class="advise-card__num">1</div>
+          <div>
+            <div class="advise-card__q">Will this credit <em>transfer</em>?</div>
+            <p class="advise-card__desc">If the student already knows where they're going (or thinks they do), the question is whether the credit will land at that destination. For Kentucky public schools, the Gen Ed Core gives you a clear answer.</p>
+          </div>
+        </div>
+
+        <div class="advise-card">
+          <div class="advise-card__num">2</div>
+          <div>
+            <div class="advise-card__q">Will it meet a <em>requirement</em>?</div>
+            <p class="advise-card__desc">Even if a class transfers, it needs to count for something. Will it satisfy a Gen Ed Core category? Will it knock out a major prerequisite? Or is it elective credit that doesn't move them closer to a degree?</p>
+          </div>
+        </div>
+
+        <div class="advise-card">
+          <div class="advise-card__num">3</div>
+          <div>
+            <div class="advise-card__q">Does it fit the <em>career goal</em>?</div>
+            <p class="advise-card__desc">Beyond requirements, does the class build a skill or background that matters for where the student wants to go? Sometimes the answer is "yes, indirectly" — and that's worth saying out loud, too.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="serif" style="font-size:30px; line-height:1.15; letter-spacing:-0.02em; margin: 56px 0 8px;">
+        How to read a <span class="serif-italic">transcript</span>
+      </h3>
+      <p class="section__lede" style="font-size:16px; margin-bottom:16px;">Once you know what to look for, a Kentucky public college transcript tells you almost everything you need in three glances:</p>
+
+      <div class="transcript" aria-label="Sample Kentucky public college transcript">
+        <div class="transcript__head">Sample transcript · Jordan, year 1</div>
+        <div class="transcript__row"><strong>ENG 101 · English Composition I</strong> <span class="transcript__code-pill">WC</span><span class="transcript__hrs">3 hrs</span></div>
+        <div class="transcript__row"><strong>ENG 102 · English Composition II</strong> <span class="transcript__code-pill">WC</span><span class="transcript__hrs">3 hrs</span></div>
+        <div class="transcript__row"><strong>COM 181 · Public Speaking</strong> <span class="transcript__code-pill">OC</span><span class="transcript__hrs">3 hrs</span></div>
+        <div class="transcript__row"><strong>MAT 150 · College Algebra</strong> <span class="transcript__code-pill">QR</span><span class="transcript__hrs">3 hrs</span></div>
+        <div class="transcript__row"><strong>BIO 137 · Anatomy &amp; Physiology I</strong> <span class="transcript__code-pill">NS · SL</span><span class="transcript__hrs">4 hrs</span></div>
+        <div class="transcript__row"><strong>PSY 110 · Intro to Psychology</strong> <span class="transcript__code-pill">SB</span><span class="transcript__hrs">3 hrs</span></div>
+        <div class="transcript__row"><strong>HIS 108 · History of the U.S. through 1865</strong> <span class="transcript__code-pill">AH</span><span class="transcript__hrs">3 hrs</span></div>
+        <div class="transcript__footer">
+          <span>22 credit hours total</span>
+          <span class="transcript__status">Category Certified · 4 of 5 categories</span>
+        </div>
+      </div>
+
+      <p class="section__body" style="margin-top:8px;">Three glances. First, scan the codes on the right — that tells you which categories the student has touched. Second, look at the credit hours — has the student hit the minimum each category needs? Third, look at the status line — that's the certification level we covered back in Section 2.</p>
+
+      <p class="section__body">Jordan above is <strong>Category Certified</strong> in four of five categories — Communication, QR, NS, SB, and AH all have at least one class. The one missing category? Look closer — Jordan has English Comp I and II (both WC) but no second SB or AH course yet. That's the next conversation.</p>
+
+      <div class="ack-button-row">
+        <button class="btn-ack" id="ack_s7">I've read this · mark complete →</button>
+      </div>
+    </section>
+
+    <section class="section" id="s8" data-section-num="8" data-section-title="Case Study: Student A &amp; B" data-completable="manual">
+      <div class="section__eyebrow">Section 8 · Case Studies</div>
+      <h2 class="section__title">Two <span class="serif-italic">students</span>, two conversations.</h2>
+      <p class="section__lede">Read each profile and write a short advising message — what would you actually say to this student? Both responses save to the action plan you'll download at the end.</p>
+      <button class="guide-hint" type="button">📋 Open the Quick Guide for a refresher</button>
+
+      <!-- ── Student A: Maya ── -->
+      <div class="profile-full">
+        <div class="profile-full__head">
+          <div class="profile-full__avatar">M</div>
+          <div>
+            <div class="profile-full__name">Meet <em>Maya</em></div>
+            <div class="profile-full__role">11th grade · wants to be a nurse</div>
+          </div>
+        </div>
+        <div class="profile-full__attrs">
+          <div class="profile-full__attr">
+            <div class="profile-full__attr-label">School</div>
+            <div class="profile-full__attr-value">Springfield High School (Boyle County)</div>
+          </div>
+          <div class="profile-full__attr-label">Taking now</div>
+          <div class="profile-full__attr-value">Two dual credit classes at the local KCTCS campus — <strong>English Composition I</strong> <span class="tcode">WC</span> and <strong>College Algebra</strong> <span class="tcode">QR</span></div>
+          <div class="profile-full__attr">
+            <div class="profile-full__attr-label">Considering</div>
+            <div class="profile-full__attr-value">Nursing at UK · Nursing at EKU · Starting at BCTC and transferring later</div>
+          </div>
+          <div class="profile-full__attr">
+            <div class="profile-full__attr-label">Worry</div>
+            <div class="profile-full__attr-value">"What if I pick the wrong school and have to start over?"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection" data-reflection="s8a">
+        <div class="reflection__label">Your advising message · Maya</div>
+        <div class="reflection__prompt">What would you say to Maya about the <em>dual credit classes she's taking right now</em> — and what should she think about adding next?</div>
+        <textarea class="reflection__textarea" id="reflection_s8a" placeholder="A few sentences. This saves to your action plan."></textarea>
+        <div class="reflection__meta">
+          <span class="reflection__meta-status" id="reflection_s8a_status">Start typing to record your response</span>
+          <span id="reflection_s8a_count">0 characters</span>
+        </div>
+      </div>
+
+      <!-- ── Student B: Marcus ── -->
+      <div class="profile-full" style="margin-top: 40px;">
+        <div class="profile-full__head">
+          <div class="profile-full__avatar">M</div>
+          <div>
+            <div class="profile-full__name">Meet <em>Marcus</em></div>
+            <div class="profile-full__role">1st year of college · mechanical engineering</div>
+          </div>
+        </div>
+        <div class="profile-full__attrs">
+          <div class="profile-full__attr">
+            <div class="profile-full__attr-label">Where</div>
+            <div class="profile-full__attr-value">Western Kentucky University · finished his first year</div>
+          </div>
+          <div class="profile-full__attr">
+            <div class="profile-full__attr-label">Completed</div>
+            <div class="profile-full__attr-value">Comp I &amp; II <span class="tcode">WC</span> · College Algebra &amp; Calc I <span class="tcode">QR</span> · Chemistry w/ Lab <span class="tcode">NS · SL</span> · Intro Psych <span class="tcode">SB</span> · History of Western Civ <span class="tcode">AH</span></div>
+          </div>
+          <div class="profile-full__attr">
+            <div class="profile-full__attr-label">Considering</div>
+            <div class="profile-full__attr-value">Transferring to UofL for a more specialized engineering program</div>
+          </div>
+          <div class="profile-full__attr">
+            <div class="profile-full__attr-label">Worry</div>
+            <div class="profile-full__attr-value">"Will I have to retake anything?"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection" data-reflection="s8b">
+        <div class="reflection__label">Your advising message · Marcus</div>
+        <div class="reflection__prompt">Look at Marcus's classes. Which categories has he <em>fully finished</em>, and which still need work? What's your message to him about transferring?</div>
+        <textarea class="reflection__textarea" id="reflection_s8b" placeholder="A few sentences. This saves to your action plan."></textarea>
+        <div class="reflection__meta">
+          <span class="reflection__meta-status" id="reflection_s8b_status">Start typing to record your response</span>
+          <span id="reflection_s8b_count">0 characters</span>
+        </div>
+      </div>
+
+      <div class="callout callout--insight" style="margin-top: 32px;">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <strong>What you might have noticed about Marcus</strong>
+          Marcus has plenty of credit — but no Oral Communication course yet, and only one class in SB and AH (each category needs two from different subjects). He's <strong>Category Certified</strong> in several places but he's not <strong>Core Certified</strong> yet. The conversation isn't "did you do enough credits?" — it's "did you finish the categories?"
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s9" data-section-num="9" data-section-title="Knowledge Check #2" data-completable="manual">
+      <div class="section__eyebrow">Section 9 · Final Check</div>
+      <h2 class="section__title">Final <span class="serif-italic">check</span>: what stuck?</h2>
+      <p class="section__lede">Five quick review questions covering the key concepts from the module. Same rules as before — pick carefully, you can't change your answer.</p>
+
+      <button class="guide-hint" type="button">📋 Open the Quick Guide for a refresher</button>
+
+      <div class="quiz" data-quiz="s9">
+
+        <div class="quiz__q" data-q="q1" data-correct="a">
+          <div class="quiz__q-num">Question 1 of 5 · true or false</div>
+          <div class="quiz__prompt">The Gen Ed Core is an agreement among <em>nine</em> Kentucky public colleges and universities.</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>True</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>False</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body"><strong>True.</strong> EKU, KCTCS, KSU, Morehead State, Murray State, NKU, UK, UofL, and WKU all participate.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q2" data-correct="b">
+          <div class="quiz__q-num">Question 2 of 5 · true or false</div>
+          <div class="quiz__prompt">If a student is <em>Category Certified</em> in three of the five categories, the other two categories will transfer to their new school as well.</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>True</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>False</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body"><strong>False.</strong> Only categories a student has actually finished will transfer. The two unfinished categories will need to be completed at the new school.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q3" data-correct="a">
+          <div class="quiz__q-num">Question 3 of 5 · true or false</div>
+          <div class="quiz__prompt">Dual credit classes taken in high school <em>can</em> count toward the Gen Ed Core, as long as they teach the same skills.</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>True</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>False</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body"><strong>True.</strong> The Gen Ed Core policy specifically covers dual credit. Those classes get checked against the same skills, and they transfer the same way as any other Gen Ed Core class.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q4" data-correct="b">
+          <div class="quiz__q-num">Question 4 of 5 · multiple choice</div>
+          <div class="quiz__prompt">To be <em>Core Certified</em>, a student needs to have...</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>Completed at least one of the five categories</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>Completed all five categories with 30+ credit hours, no class counted twice</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>Completed the Gen Ed Core plus any extras their sending school required</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>Earned an Associate's degree</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body"><strong>All five categories, 30+ credits, no double-counting.</strong> Option A is Category Certified, and option C is Fully Certified — both real, both different from Core Certified.</div>
+          </div>
+        </div>
+
+        <div class="quiz__q" data-q="q5" data-correct="c">
+          <div class="quiz__q-num">Question 5 of 5 · multiple choice</div>
+          <div class="quiz__prompt">A student graduates from a KCTCS college with an approved AA transfer degree. When they transfer to a Kentucky public university, they enter as...</div>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>A freshman</span></button>
+            <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>A sophomore</span></button>
+            <button class="quiz__opt" data-opt="c"><span class="quiz__opt-dot"></span><span>A junior with general education fully complete</span></button>
+            <button class="quiz__opt" data-opt="d"><span class="quiz__opt-dot"></span><span>A senior</span></button>
+          </div>
+          <div class="quiz__feedback">
+            <div class="quiz__feedback-head"></div>
+            <div class="quiz__feedback-body"><strong>Junior standing, general education fully complete.</strong> This is the guarantee that makes the KCTCS-to-university pathway work as smoothly as it does.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="s10" data-section-num="10" data-section-title="Reflection &amp; Action Plan" data-completable="manual">
+      <div class="section__eyebrow">Section 10 · Reflect &amp; Wrap Up</div>
+      <h2 class="section__title">One <span class="serif-italic">last thing</span>. Reflect.</h2>
+      <p class="section__lede">You've covered a lot. Before you close out, take a few minutes to write down three specific things you want to carry back into your work. Everything you type here saves into an action plan you'll be able to download or print.</p>
+
+      <div class="reflection reflection--gated" data-reflection="s10_1">
+        <div class="reflection__label">Reflection 1 of 3</div>
+        <div class="reflection__prompt">One <em>misconception</em> students often have about college credit that you can help correct is...</div>
+        <textarea class="reflection__textarea" id="reflection_s10_1" placeholder="A sentence or two. This saves automatically."></textarea>
+        <div class="reflection__meta">
+          <span class="reflection__meta-status" id="reflection_s10_1_status">Add at least one complete sentence</span>
+          <span id="reflection_s10_1_count">0 sentences</span>
+        </div>
+      </div>
+
+      <div class="reflection reflection--gated" data-reflection="s10_2">
+        <div class="reflection__label">Reflection 2 of 3</div>
+        <div class="reflection__prompt">One <em>change</em> you'll make in your advising conversations is...</div>
+        <textarea class="reflection__textarea" id="reflection_s10_2" placeholder="A sentence or two."></textarea>
+        <div class="reflection__meta">
+          <span class="reflection__meta-status" id="reflection_s10_2_status">Add at least one complete sentence</span>
+          <span id="reflection_s10_2_count">0 sentences</span>
+        </div>
+      </div>
+
+      <div class="reflection reflection--gated" data-reflection="s10_3">
+        <div class="reflection__label">Reflection 3 of 3</div>
+        <div class="reflection__prompt">One <em>resource, tool, or habit</em> you'll use more often is...</div>
+        <textarea class="reflection__textarea" id="reflection_s10_3" placeholder="A sentence or two."></textarea>
+        <div class="reflection__meta">
+          <span class="reflection__meta-status" id="reflection_s10_3_status">Add at least one complete sentence</span>
+          <span id="reflection_s10_3_count">0 sentences</span>
+        </div>
+      </div>
+
+      <div class="finish-summary" id="finishSummary">
+        <span id="finishSummaryText">0 of 3 reflections ready</span>
+      </div>
+
+      <div class="finish-actions">
+        <button class="finish-btn" id="downloadPlanBtn" type="button" disabled>
+          <div class="finish-btn__icon">📋</div>
+          <div>
+            <div class="finish-btn__title">Download your Action Plan</div>
+            <div class="finish-btn__desc">Opens in a new window. Print or save as PDF.</div>
+          </div>
+        </button>
+        <button class="finish-btn" id="viewCertBtn" type="button" disabled>
+          <div class="finish-btn__icon">🎓</div>
+          <div>
+            <div class="finish-btn__title">View your Certificate</div>
+            <div class="finish-btn__desc">Opens in a new window. Print or save as PDF.</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="section__close-note">
+        Thank you for taking the time. The work you do with students is <em>how Kentucky's system works.</em>
+      </div>
+    </section>
+
+    <!-- ── Page nav: previous / next ── -->
+    <nav class="page-nav" aria-label="Section navigation">
+      <button class="page-nav__btn page-nav__prev" id="prevBtn">← Previous</button>
+      <div class="page-nav__meta" id="pageMeta">Section 1 of 10</div>
+      <button class="page-nav__btn page-nav__next" id="nextBtn">Next →</button>
+    </nav>
+
+  </main>
+</div>
+
+<!-- save indicator -->
+<div class="save-indicator" id="saveIndicator">✓ Saved</div>
+
+<!-- ─────────────────────────────────────────────────────────
+     QUICK GUIDE drawer (always available)
+     ───────────────────────────────────────────────────────── -->
+<!-- Floating quick guide button (always visible) -->
+<button class="guide-fab" id="guideFab" aria-label="Open quick guide" title="Quick guide">
+  <span class="guide-fab__icon" aria-hidden="true">📋</span>
+  <span>Quick guide</span>
+</button>
+
+<div class="guide-overlay" id="guideOverlay" aria-hidden="true"></div>
+<aside class="guide-drawer" id="guideDrawer" role="dialog" aria-modal="true" aria-labelledby="guideTitle" aria-hidden="true">
+  <div class="guide-drawer__head">
+    <div>
+      <h2 class="guide-drawer__title" id="guideTitle">Quick <em>guide</em></h2>
+      <p class="guide-drawer__sub">Everything you need to remember — open this anytime.</p>
+    </div>
+    <button class="guide-drawer__close" id="guideClose" aria-label="Close">✕</button>
+  </div>
+  <div class="guide-drawer__body">
+
+    <div class="guide-section">
+      <div class="guide-section__label">The five categories</div>
+
+      <div class="guide-cat">
+        <div class="guide-cat__icon">C</div>
+        <div>
+          <div class="guide-cat__name">Communication</div>
+          <div class="guide-cat__meta"><span class="guide-cat__code">WC + OC</span><span class="guide-cat__hours">6–9 hours</span></div>
+          <p class="guide-cat__desc">English Composition, Public Speaking, Business Communication.</p>
+        </div>
+      </div>
+
+      <div class="guide-cat">
+        <div class="guide-cat__icon">Q</div>
+        <div>
+          <div class="guide-cat__name">Quantitative Reasoning</div>
+          <div class="guide-cat__meta"><span class="guide-cat__code">QR</span><span class="guide-cat__hours">3–6 hours</span></div>
+          <p class="guide-cat__desc">College Algebra, Statistics, Finite Math, Quantitative Reasoning.</p>
+        </div>
+      </div>
+
+      <div class="guide-cat">
+        <div class="guide-cat__icon">N</div>
+        <div>
+          <div class="guide-cat__name">Natural Sciences</div>
+          <div class="guide-cat__meta"><span class="guide-cat__code">NS · SL</span><span class="guide-cat__hours">3–7 hours</span></div>
+          <p class="guide-cat__desc">Biology, Chemistry, Physics, Geology — must include a hands-on lab.</p>
+        </div>
+      </div>
+
+      <div class="guide-cat">
+        <div class="guide-cat__icon">S</div>
+        <div>
+          <div class="guide-cat__name">Social &amp; Behavioral Sciences</div>
+          <div class="guide-cat__meta"><span class="guide-cat__code">SB</span><span class="guide-cat__hours">6–9 hours</span></div>
+          <p class="guide-cat__desc">Psychology, Sociology, Anthropology, Economics, Political Science.</p>
+        </div>
+      </div>
+
+      <div class="guide-cat">
+        <div class="guide-cat__icon">A</div>
+        <div>
+          <div class="guide-cat__name">Arts &amp; Humanities</div>
+          <div class="guide-cat__meta"><span class="guide-cat__code">AH</span><span class="guide-cat__hours">6–9 hours</span></div>
+          <p class="guide-cat__desc">History, Literature, Philosophy, Art Appreciation, Foreign Language.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="guide-section__label">Three levels of completion</div>
+
+      <div class="guide-level">
+        <div class="guide-level__num">1</div>
+        <div>
+          <div class="guide-level__name"><em>Category</em> Certified</div>
+          <p class="guide-level__desc">Some categories finished, not all five. The finished ones transfer.</p>
+        </div>
+      </div>
+
+      <div class="guide-level guide-level--core">
+        <div class="guide-level__num">2</div>
+        <div>
+          <div class="guide-level__name"><em>Core</em> Certified</div>
+          <p class="guide-level__desc">All five categories finished. 30+ credits, no double-counting. The whole Gen Ed Core transfers.</p>
+        </div>
+      </div>
+
+      <div class="guide-level guide-level--full">
+        <div class="guide-level__num">3</div>
+        <div>
+          <div class="guide-level__name"><em>Fully</em> Certified</div>
+          <p class="guide-level__desc">Gen Ed Core plus the sending school's extra general ed classes. Nothing left to repeat.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="guide-section__label">A few hard-to-remember rules</div>
+      <div class="guide-rules">
+        <p>• <strong>SB</strong> needs two classes from <strong>different subjects</strong> (not two psychology classes).</p>
+        <p>• <strong>AH</strong> needs two classes; foreign language can count.</p>
+        <p>• <strong>NS</strong> requires a hands-on <strong>lab</strong> somewhere (the SL code).</p>
+        <p>• <strong>Core Certified</strong> = 30+ credit hours, no double-counting one class across two categories.</p>
+        <p>• An <strong>AA or AS</strong> from KCTCS through an approved transfer program = full Gen Ed Core + junior standing at any Kentucky public university.</p>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
+<!-- ─────────────────────────────────────────────────────────
+     JAVASCRIPT
+     ───────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── state ─────────────────────────────────────────────── */
+  const STORAGE_KEY = 'cpe_gened_training_v1';
+  const DEFAULT_STATE = {
+    name: '',
+    org: '',
+    started: false,
+    poll: null,
+    s3_expanded: {},   // category id -> true
+    s4_answers: {},    // q id -> selected option letter
+    s5_answers: {},
+    s6_reflection: '',
+    s7_acknowledged: false,
+    s8_reflection_a: '',
+    s8_reflection_b: '',
+    s9_answers: {},
+    s10_reflection_1: '',
+    s10_reflection_2: '',
+    s10_reflection_3: '',
+    completed: {},
+    activeSection: 's1'
+  };
+  let state = loadState();
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { ...DEFAULT_STATE };
+      const parsed = JSON.parse(raw);
+      return {
+        ...DEFAULT_STATE, ...parsed,
+        s3_expanded: parsed.s3_expanded || {},
+        s4_answers: parsed.s4_answers || {},
+        s5_answers: parsed.s5_answers || {},
+        s9_answers: parsed.s9_answers || {},
+        completed: parsed.completed || {}
+      };
+    } catch (e) {
+      return { ...DEFAULT_STATE };
+    }
+  }
+
+  let saveTimer = null;
+  function saveState() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        showSaved();
+      } catch (e) { console.warn('Save failed', e); }
+    }, 600);
+  }
+  function showSaved() {
+    const el = document.getElementById('saveIndicator');
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 1500);
+  }
+
+  /* ── name gate ─────────────────────────────────────────── */
+  const nameGate = document.getElementById('nameGate');
+  const nameInput = document.getElementById('userName');
+  const orgInput = document.getElementById('userOrg');
+  const beginBtn = document.getElementById('beginBtn');
+
+  function refreshBeginBtn() {
+    const ok = nameInput.value.trim().length >= 2;
+    beginBtn.disabled = !ok;
+  }
+  nameInput.addEventListener('input', () => { state.name = nameInput.value.trim(); refreshBeginBtn(); saveState(); });
+  orgInput.addEventListener('input',  () => { state.org  = orgInput.value.trim();  saveState(); });
+
+  beginBtn.addEventListener('click', () => {
+    state.name = nameInput.value.trim();
+    state.org = orgInput.value.trim();
+    state.started = true;
+    saveState();
+    closeNameGate();
+  });
+
+  function closeNameGate() {
+    nameGate.classList.add('hidden');
+    document.getElementById('nameBadge').style.display = 'inline-flex';
+    document.getElementById('nameBadge').textContent = state.name.split(' ')[0];
+    document.body.style.overflow = '';
+  }
+  function openNameGate() {
+    nameGate.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => nameInput.focus(), 100);
+  }
+
+  // restore from storage
+  if (state.started && state.name) {
+    nameInput.value = state.name;
+    orgInput.value = state.org;
+    closeNameGate();
+  } else {
+    nameInput.value = state.name || '';
+    orgInput.value = state.org || '';
+    refreshBeginBtn();
+    document.body.style.overflow = 'hidden';
+  }
+
+  /* ── reset ─────────────────────────────────────────────── */
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (!confirm('Reset all progress? This clears your reflections, quiz answers, and certification.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  });
+
+  /* ── sidenav build ─────────────────────────────────────── */
+  const sections = Array.from(document.querySelectorAll('.section[id]'));
+  const list = document.getElementById('sideList');
+  sections.forEach((sec, i) => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'sidenav__item';
+    btn.dataset.target = sec.id;
+    const num = document.createElement('span');
+    num.className = 'sidenav__num';
+    const numTxt = document.createElement('span');
+    numTxt.className = 'num-text';
+    numTxt.textContent = i + 1;
+    num.appendChild(numTxt);
+    const txt = document.createElement('span');
+    txt.className = 'sidenav__txt';
+    txt.textContent = sec.dataset.sectionTitle || ('Section ' + (i + 1));
+    btn.appendChild(num);
+    btn.appendChild(txt);
+    btn.addEventListener('click', () => {
+      showSection(sec.id);
+    });
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+
+  function refreshSidenav() {
+    document.querySelectorAll('.sidenav__item').forEach(item => {
+      const id = item.dataset.target;
+      item.classList.toggle('active', id === state.activeSection);
+      item.classList.toggle('completed', !!state.completed[id]);
+    });
+  }
+  refreshSidenav();
+
+  /* ── progress ──────────────────────────────────────────── */
+  function refreshProgress() {
+    const total = sections.length;
+    const done = Object.values(state.completed).filter(Boolean).length;
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = pct + '%';
+  }
+  refreshProgress();
+
+  function markComplete(id) {
+    if (!state.completed[id]) {
+      state.completed[id] = true;
+      saveState();
+      refreshSidenav();
+      refreshProgress();
+    }
+  }
+
+  /* ── page-by-page navigation ───────────────────────────── */
+  const sectionIds = sections.map(s => s.id);
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const pageMeta = document.getElementById('pageMeta');
+
+  function showSection(id) {
+    // fall back to s1 if id is unknown
+    if (!sectionIds.includes(id)) id = 's1';
+    sections.forEach(s => s.classList.toggle('is-active', s.id === id));
+    state.activeSection = id;
+    refreshSidenav();
+    saveState();
+
+    // mark "view"-completable sections complete when shown
+    const sec = document.getElementById(id);
+    const mode = sec.dataset.completable;
+    if (mode === 'view') {
+      markComplete(id);
+    } else if (mode === 'poll' && state.poll) {
+      markComplete(id);
+    }
+
+    // update page nav controls
+    const idx = sectionIds.indexOf(id);
+    const total = sectionIds.length;
+    pageMeta.textContent = 'Section ' + (idx + 1) + ' of ' + total;
+    prevBtn.hidden = (idx === 0);
+    nextBtn.hidden = (idx === total - 1);
+
+    // scroll to top so the new section's header is in view
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    const idx = sectionIds.indexOf(state.activeSection);
+    if (idx > 0) showSection(sectionIds[idx - 1]);
+  });
+  nextBtn.addEventListener('click', () => {
+    const idx = sectionIds.indexOf(state.activeSection);
+    if (idx < sectionIds.length - 1) showSection(sectionIds[idx + 1]);
+  });
+
+  // initial render — honor whatever section the user was last on
+  showSection(state.activeSection || 's1');
+
+  /* ── opening poll (Section 1) ─────────────────────────── */
+  const pollOpts = document.querySelectorAll('.poll__option');
+  const pollReveal = document.getElementById('pollReveal');
+
+  function applyPoll(value) {
+    pollOpts.forEach(btn => {
+      btn.disabled = true;
+      btn.classList.toggle('selected', btn.dataset.poll === value);
+    });
+    pollReveal.classList.add('shown');
+    markComplete('s1');
+  }
+  pollOpts.forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.poll = btn.dataset.poll;
+      saveState();
+      applyPoll(state.poll);
+    });
+  });
+  if (state.poll) applyPoll(state.poll);
+
+  /* ── enter animations handled by .is-active class ─────── */
+
+
+  /* ── Section 3: category card click-to-reveal ──────────── */
+  function setupCategoryCards() {
+    document.querySelectorAll('.category-card').forEach(card => {
+      const id = card.dataset.cat;
+      if (state.s3_expanded[id]) card.classList.add('expanded');
+      const head = card.querySelector('.category-card__head');
+      head.addEventListener('click', () => {
+        const isOpen = card.classList.toggle('expanded');
+        state.s3_expanded[id] = isOpen;
+        saveState();
+        // mark complete when 3+ have been opened
+        const openCount = Object.values(state.s3_expanded).filter(Boolean).length;
+        if (openCount >= 3) markComplete('s3');
+      });
+    });
+    // restore completion if already met
+    const openCount = Object.values(state.s3_expanded).filter(Boolean).length;
+    if (openCount >= 3) markComplete('s3');
+  }
+  setupCategoryCards();
+
+  /* ── Sections 4 & 5: quiz handling ─────────────────────── */
+  function setupQuiz(quizSelector, stateKey, sectionId) {
+    const quiz = document.querySelector(quizSelector);
+    if (!quiz) return;
+    const answers = state[stateKey] || {};
+    const questions = quiz.querySelectorAll('.quiz__q');
+
+    function applyAnswer(q, picked) {
+      const correct = q.dataset.correct;
+      const isRight = picked === correct;
+      q.querySelectorAll('.quiz__opt').forEach(opt => {
+        opt.disabled = true;
+        const letter = opt.dataset.opt;
+        if (letter === correct) opt.classList.add('correct');
+        else if (letter === picked) opt.classList.add('incorrect');
+        if (letter === picked) opt.classList.add('selected');
+      });
+      const fb = q.querySelector('.quiz__feedback');
+      const head = fb.querySelector('.quiz__feedback-head');
+      if (isRight) {
+        fb.classList.add('shown', 'quiz__feedback--correct');
+        head.textContent = 'Correct ✓';
+      } else {
+        fb.classList.add('shown', 'quiz__feedback--incorrect');
+        head.textContent = 'Not quite —';
+      }
+    }
+
+    questions.forEach(q => {
+      const qid = q.dataset.q;
+      // restore existing answer
+      if (answers[qid]) applyAnswer(q, answers[qid]);
+
+      q.querySelectorAll('.quiz__opt').forEach(opt => {
+        opt.addEventListener('click', () => {
+          if (answers[qid]) return; // locked
+          const picked = opt.dataset.opt;
+          answers[qid] = picked;
+          state[stateKey] = answers;
+          saveState();
+          applyAnswer(q, picked);
+          // section completes when all questions answered
+          const total = questions.length;
+          const done = Object.keys(answers).length;
+          if (done >= total) markComplete(sectionId);
+        });
+      });
+    });
+
+    // already complete?
+    const total = questions.length;
+    const done = Object.keys(answers).length;
+    if (done >= total) markComplete(sectionId);
+  }
+  setupQuiz('.quiz[data-quiz="s4"]', 's4_answers', 's4');
+  setupQuiz('.quiz[data-quiz="s5"]', 's5_answers', 's5');
+  setupQuiz('.quiz[data-quiz="s9"]', 's9_answers', 's9');
+
+
+  /* ── Section 6, 8: reflection textareas ────────────────── */
+  function setupReflection(textareaId, stateKey, sectionId, opts) {
+    opts = opts || {};
+    const ta = document.getElementById(textareaId);
+    const status = document.getElementById(textareaId + '_status');
+    const counter = document.getElementById(textareaId + '_count');
+    if (!ta) return;
+
+    // restore value
+    ta.value = state[stateKey] || '';
+    updateUI();
+
+    function updateUI() {
+      const len = ta.value.trim().length;
+      counter.textContent = ta.value.length + ' characters';
+      if (len >= 10) {
+        status.textContent = '✓ Saved to your action plan';
+        status.classList.add('done');
+      } else {
+        status.textContent = opts.startMsg || 'Start typing to mark this section complete';
+        status.classList.remove('done');
+      }
+    }
+
+    ta.addEventListener('input', () => {
+      state[stateKey] = ta.value;
+      saveState();
+      updateUI();
+      if (opts.checkComplete) opts.checkComplete();
+    });
+
+    return { isFilled: () => ta.value.trim().length >= 10 };
+  }
+
+  // S6: complete when reflection has 10+ chars
+  const r6 = setupReflection('reflection_s6', 's6_reflection', 's6', {
+    checkComplete: () => { if (r6 && r6.isFilled()) markComplete('s6'); }
+  });
+  if (r6 && r6.isFilled()) markComplete('s6');
+
+  // S8: complete when BOTH reflections have 10+ chars
+  function checkS8() {
+    if (r8a && r8b && r8a.isFilled() && r8b.isFilled()) markComplete('s8');
+  }
+  const r8a = setupReflection('reflection_s8a', 's8_reflection_a', 's8', {
+    startMsg: 'Start typing to record your response',
+    checkComplete: checkS8
+  });
+  const r8b = setupReflection('reflection_s8b', 's8_reflection_b', 's8', {
+    startMsg: 'Start typing to record your response',
+    checkComplete: checkS8
+  });
+  checkS8();
+
+  /* ── Section 7: ack button ─────────────────────────────── */
+  (function setupAckS7() {
+    const btn = document.getElementById('ack_s7');
+    if (!btn) return;
+    function markDone() {
+      btn.classList.add('done');
+      btn.textContent = '✓ Marked complete';
+      btn.disabled = true;
+    }
+    if (state.s7_acknowledged) markDone();
+    btn.addEventListener('click', () => {
+      state.s7_acknowledged = true;
+      saveState();
+      markDone();
+      markComplete('s7');
+    });
+    if (state.s7_acknowledged) markComplete('s7');
+  })();
+
+  /* ── Quick Guide drawer ────────────────────────────────── */
+  (function setupQuickGuide() {
+    const fab = document.getElementById('guideFab');
+    const overlay = document.getElementById('guideOverlay');
+    const drawer = document.getElementById('guideDrawer');
+    const closeBtn = document.getElementById('guideClose');
+    if (!fab || !drawer) return;
+
+    function open() {
+      overlay.classList.add('shown');
+      drawer.classList.add('shown');
+      fab.classList.add('hidden');
+      drawer.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+    function close() {
+      overlay.classList.remove('shown');
+      drawer.classList.remove('shown');
+      fab.classList.remove('hidden');
+      drawer.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    fab.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('shown')) close();
+    });
+
+    document.querySelectorAll('.guide-hint').forEach(h => {
+      h.addEventListener('click', open);
+    });
+  })();
+
+  /* ── Section 10: gated reflections + finish summary ────── */
+  function countSentences(text) {
+    const matches = text.match(/[^.!?]+[.!?]+/g);
+    return matches ? matches.length : 0;
+  }
+
+  function setupGatedReflection(idSuffix, stateKey) {
+    const ta = document.getElementById('reflection_' + idSuffix);
+    const status = document.getElementById('reflection_' + idSuffix + '_status');
+    const counter = document.getElementById('reflection_' + idSuffix + '_count');
+    if (!ta) return null;
+
+    ta.value = state[stateKey] || '';
+
+    function updateUI() {
+      const n = countSentences(ta.value);
+      counter.textContent = n + ' sentence' + (n === 1 ? '' : 's');
+      if (n >= 1) {
+        status.textContent = 'Ready ✓';
+        status.classList.add('done');
+      } else {
+        status.textContent = 'Add at least one complete sentence';
+        status.classList.remove('done');
+      }
+    }
+    updateUI();
+
+    ta.addEventListener('input', () => {
+      state[stateKey] = ta.value;
+      saveState();
+      updateUI();
+      updateFinishSummary();
+    });
+
+    return { isReady: () => countSentences(ta.value) >= 1 };
+  }
+
+  const r10_1 = setupGatedReflection('s10_1', 's10_reflection_1');
+  const r10_2 = setupGatedReflection('s10_2', 's10_reflection_2');
+  const r10_3 = setupGatedReflection('s10_3', 's10_reflection_3');
+
+  function updateFinishSummary() {
+    if (!r10_1 || !r10_2 || !r10_3) return;
+    const readies = [r10_1, r10_2, r10_3].map(r => r.isReady());
+    const count = readies.filter(Boolean).length;
+    const summary = document.getElementById('finishSummary');
+    const text = document.getElementById('finishSummaryText');
+    const dlBtn = document.getElementById('downloadPlanBtn');
+    const certBtn = document.getElementById('viewCertBtn');
+    if (!summary) return;
+
+    if (count === 3) {
+      text.textContent = '✓ All three reflections ready — action plan and certificate unlocked';
+      summary.classList.add('ready');
+      dlBtn.disabled = false;
+      certBtn.disabled = false;
+      markComplete('s10');
+    } else {
+      text.textContent = count + ' of 3 reflections ready';
+      summary.classList.remove('ready');
+      dlBtn.disabled = true;
+      certBtn.disabled = true;
+    }
+  }
+  updateFinishSummary();
+
+  /* ── Section 10: action plan + certificate generators ──── */
+
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, c =>
+      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  }
+  function paragraphize(text) {
+    if (!text || !text.trim()) return '<p style="color:#94a3b8;font-style:italic;">Not answered.</p>';
+    return escHtml(text.trim())
+      .split(/\n\s*\n/)
+      .map(p => '<p>' + p.replace(/\n/g, '<br>') + '</p>')
+      .join('\n');
+  }
+  function getLogoUrl() {
+    const el = document.querySelector('.topbar__logo');
+    return el ? el.src : '';
+  }
+  function today() {
+    return new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  function generateActionPlan() {
+    const logoUrl = getLogoUrl();
+    const date = today();
+    const name = escHtml(state.name || 'Learner');
+    const org  = escHtml(state.org || '');
+
+    const rcard = (label, prompt, text, tint) => `
+      <div class="rcard ${tint}">
+        <div class="rcard__label">${label}</div>
+        <div class="rcard__prompt">${prompt}</div>
+        <div class="rcard__response">${paragraphize(text)}</div>
+      </div>`;
+
+    const s6  = state.s6_reflection || '';
+    const s8a = state.s8_reflection_a || '';
+    const s8b = state.s8_reflection_b || '';
+    const s10_1 = state.s10_reflection_1 || '';
+    const s10_2 = state.s10_reflection_2 || '';
+    const s10_3 = state.s10_reflection_3 || '';
+
+    const doc = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Action Plan · CPE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@page { size: letter; margin: 0.6in; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; font-family: 'Geist', sans-serif; color: #0f172a; background: #fafbff; line-height: 1.55; }
+.toolbar { position: sticky; top: 0; z-index: 10; background: white; border-bottom: 1px solid rgba(15,23,42,0.08); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+.toolbar__title { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #475569; }
+.toolbar__btn { padding: 8px 18px; background: linear-gradient(135deg, #1B4595, #2D6CB9 50%, #DF6A38); color: white; border: none; border-radius: 100px; font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; }
+@media print { .toolbar { display: none !important; } body { background: white; } }
+.page { max-width: 800px; margin: 0 auto; padding: 48px 40px 64px; }
+.header { display: flex; align-items: center; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid rgba(15,23,42,0.08); margin-bottom: 32px; }
+.header__logo { height: 52px; width: auto; }
+.header__eyebrow { font-family: 'Geist Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #475569; margin-bottom: 4px; }
+.header__title { font-family: 'Instrument Serif', serif; font-size: 42px; line-height: 1.05; letter-spacing: -0.03em; margin: 0; }
+.header__title em { background: linear-gradient(135deg, #1B4595, #2D6CB9 40%, #DF6A38); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+.personal { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; background: #f7f8fc; border: 1px solid rgba(15,23,42,0.06); border-radius: 14px; padding: 18px 22px; margin-bottom: 40px; }
+.personal__label { font-family: 'Geist Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #475569; margin-bottom: 4px; }
+.personal__value { color: #0f172a; font-weight: 500; font-size: 14px; }
+.section-h { font-family: 'Instrument Serif', serif; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; margin: 36px 0 16px; }
+.section-h em { font-style: italic; background: linear-gradient(135deg, #1B4595, #2D6CB9 40%, #DF6A38); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.rcard { padding: 22px 24px; background: linear-gradient(135deg, white 0%, #E4ECF7 100%); border: 1px solid rgba(45,108,185,0.15); border-radius: 16px; margin-bottom: 14px; page-break-inside: avoid; }
+.rcard--warm { background: linear-gradient(135deg, white 0%, #FBE9D9 100%); border-color: rgba(223,106,56,0.15); }
+.rcard--green { background: linear-gradient(135deg, white 0%, #d1fae5 100%); border-color: rgba(16,185,129,0.15); }
+.rcard__label { font-family: 'Geist Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #475569; margin-bottom: 6px; }
+.rcard__prompt { font-family: 'Instrument Serif', serif; font-size: 19px; line-height: 1.3; letter-spacing: -0.015em; margin-bottom: 12px; color: #0f172a; }
+.rcard__prompt em { font-style: italic; background: linear-gradient(135deg, #1B4595, #DF6A38); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.rcard__response { font-size: 14px; line-height: 1.6; color: #0f172a; }
+.rcard__response p { margin: 0 0 10px; }
+.rcard__response p:last-child { margin-bottom: 0; }
+.footer { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(15,23,42,0.08); font-family: 'Geist Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; text-align: center; }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="toolbar__title">Your Action Plan</div>
+  <button class="toolbar__btn" onclick="window.print()">Print · Save as PDF</button>
+</div>
+<div class="page">
+  <div class="header">
+    <img class="header__logo" src="${logoUrl}" alt="Kentucky Council on Postsecondary Education">
+    <div>
+      <div class="header__eyebrow">Kentucky Council on Postsecondary Education</div>
+      <h1 class="header__title">Your <em>Action Plan</em></h1>
+    </div>
+  </div>
+
+  <div class="personal">
+    <div>
+      <div class="personal__label">Name</div>
+      <div class="personal__value">${name}</div>
+    </div>
+    ${org ? `<div>
+      <div class="personal__label">Organization</div>
+      <div class="personal__value">${org}</div>
+    </div>` : ''}
+    <div>
+      <div class="personal__label">Training</div>
+      <div class="personal__value">Understanding Kentucky's General Education Core</div>
+    </div>
+    <div>
+      <div class="personal__label">Completed</div>
+      <div class="personal__value">${date}</div>
+    </div>
+  </div>
+
+  ${(s6 || s8a || s8b) ? `<div class="section-h">What you <em>practiced</em></div>` : ''}
+  ${s6  ? rcard('Reflection · Section 6', 'How the Gen Ed Core might change one advising conversation', s6, '') : ''}
+  ${s8a ? rcard('Case study · Section 8', 'Your advising message to Maya', s8a, 'rcard--warm') : ''}
+  ${s8b ? rcard('Case study · Section 8', 'Your advising message to Marcus', s8b, 'rcard--warm') : ''}
+
+  <div class="section-h">What you'll <em>carry forward</em></div>
+  ${rcard('Commitment 1', 'One misconception you\'ll help students correct', s10_1, 'rcard--green')}
+  ${rcard('Commitment 2', 'One change you\'ll make in your advising conversations', s10_2, 'rcard--green')}
+  ${rcard('Commitment 3', 'One resource, tool, or habit you\'ll use more often', s10_3, 'rcard--green')}
+
+  <div class="footer">Generated ${date} · Kentucky Council on Postsecondary Education</div>
+</div>
+</body>
+</html>`;
+
+    const w = window.open('', '_blank');
+    if (!w) { alert('Please allow pop-ups so the action plan can open in a new window.'); return; }
+    w.document.open();
+    w.document.write(doc);
+    w.document.close();
+  }
+
+  function generateCertificate() {
+    const logoUrl = getLogoUrl();
+    const date = today();
+    const name = escHtml(state.name || 'Learner');
+
+    const doc = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Certificate · CPE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@page { size: letter landscape; margin: 0.5in; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; font-family: 'Geist', sans-serif; color: #0f172a; background: #f7f8fc; }
+.toolbar { position: sticky; top: 0; z-index: 10; background: white; border-bottom: 1px solid rgba(15,23,42,0.08); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+.toolbar__title { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #475569; }
+.toolbar__btn { padding: 8px 18px; background: linear-gradient(135deg, #1B4595, #2D6CB9 50%, #DF6A38); color: white; border: none; border-radius: 100px; font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; }
+.toolbar__btn:disabled { background: #eef0f8; color: #94a3b8; cursor: wait; }
+@media print { .toolbar { display: none !important; } body { background: white; } }
+.cert { width: 10in; height: 7.5in; margin: 40px auto; padding: 0.55in 0.65in; background: white; border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 12px 40px rgba(27,69,149,0.08); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+@media print { .cert { margin: 0; border: none; box-shadow: none; } }
+.cert__bar { position: absolute; top: 0; left: 0; right: 0; height: 14px; background: linear-gradient(135deg, #0F2A5C 0%, #1B4595 40%, #2D6CB9 70%, #DF6A38 100%); }
+.cert__header { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 18px; margin-bottom: 28px; }
+.cert__logo { height: 62px; width: auto; }
+.cert__institution { font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.20em; color: #475569; }
+.cert__body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.cert__eyebrow { font-family: 'Geist Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.25em; color: #1B4595; margin-bottom: 22px; }
+.cert__preamble { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: #475569; margin-bottom: 14px; }
+.cert__name { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 82px; line-height: 1.0; letter-spacing: -0.03em; background: linear-gradient(135deg, #1B4595, #2D6CB9 40%, #DF6A38); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 26px; max-width: 100%; padding: 4px 20px; }
+.cert__postamble { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px; color: #475569; margin-bottom: 10px; }
+.cert__training-title { font-family: 'Instrument Serif', serif; font-size: 30px; line-height: 1.15; letter-spacing: -0.02em; color: #0f172a; }
+.cert__training-title em { font-style: italic; background: linear-gradient(135deg, #1B4595, #DF6A38); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cert__footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; padding-top: 20px; border-top: 1px solid rgba(15,23,42,0.08); }
+.cert__sig { flex: 1; text-align: center; }
+.cert__sig-line { border-bottom: 1px solid #0f172a; margin-bottom: 6px; height: 1px; }
+.cert__sig-label { font-family: 'Geist Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #475569; }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="toolbar__title">Certificate of Completion</div>
+  <button class="toolbar__btn" id="printBtn" disabled>Loading fonts…</button>
+</div>
+<div class="cert">
+  <div class="cert__bar"></div>
+  <div class="cert__header">
+    <img class="cert__logo" src="${logoUrl}" alt="CPE">
+    <div class="cert__institution">Kentucky Council on Postsecondary Education</div>
+  </div>
+  <div class="cert__body">
+    <div class="cert__eyebrow">Certificate of Completion</div>
+    <div class="cert__preamble">This certifies that</div>
+    <div class="cert__name">${name}</div>
+    <div class="cert__postamble">has completed the training</div>
+    <div class="cert__training-title">Understanding Kentucky's <em>General Education Core</em></div>
+  </div>
+  <div class="cert__footer">
+    <div class="cert__sig">
+      <div class="cert__sig-line"></div>
+      <div class="cert__sig-label">Kentucky Council on Postsecondary Education</div>
+    </div>
+    <div class="cert__sig">
+      <div class="cert__sig-line"></div>
+      <div class="cert__sig-label">${date}</div>
+    </div>
+  </div>
+</div>
+<scr` + `ipt>
+(function() {
+  const btn = document.getElementById('printBtn');
+  let enabled = false;
+  function enable() {
+    if (enabled) return;
+    enabled = true;
+    btn.disabled = false;
+    btn.textContent = 'Print · Save as PDF';
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(enable);
+  }
+  setTimeout(enable, 3000);
+  btn.addEventListener('click', () => { if (enabled) window.print(); });
+})();
+</scr` + `ipt>
+</body>
+</html>`;
+
+    const w = window.open('', '_blank', 'width=1200,height=900');
+    if (!w) { alert('Please allow pop-ups so the certificate can open in a new window.'); return; }
+    w.document.open();
+    w.document.write(doc);
+    w.document.close();
+  }
+
+  const dlBtnEl = document.getElementById('downloadPlanBtn');
+  const certBtnEl = document.getElementById('viewCertBtn');
+  if (dlBtnEl) dlBtnEl.addEventListener('click', generateActionPlan);
+  if (certBtnEl) certBtnEl.addEventListener('click', generateCertificate);
+
+})();
+</script>
+
+</body>
+</html>
