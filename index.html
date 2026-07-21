@@ -656,7 +656,7 @@ p { margin: 0 0 1em; }
   line-height: 1.2;
 }
 .callout__body { flex: 1; }
-.callout__body strong { display: block; margin-bottom: 4px; }
+.callout__body > strong:first-child { display: block; margin-bottom: 4px; }
 .callout--insight { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-amber) 100%); border-color: rgba(245, 158, 11, 0.18); }
 .callout--policy  { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-blue) 100%); border-color: rgba(27, 69, 149, 0.18); }
 .callout--note    { background: linear-gradient(135deg, var(--surface) 0%, var(--tint-purple) 100%); border-color: rgba(45, 108, 185, 0.18); }
@@ -895,6 +895,17 @@ p { margin: 0 0 1em; }
 .tier__desc { font-size: 15px; line-height: 1.55; color: var(--text-muted); margin: 0; }
 
 /* ─── institutions row ─── */
+.inst-group { margin-bottom: 22px; }
+.inst-group:last-child { margin-bottom: 4px; }
+.inst-group__label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--text-muted);
+  margin: 20px 0 10px;
+}
+.inst-group .inst-list { margin: 0; }
 .inst-list {
   display: flex;
   flex-wrap: wrap;
@@ -1736,16 +1747,41 @@ p { margin: 0 0 1em; }
         <p>This isn't a handshake deal — it's required by Kentucky law. The current version of the Gen Ed Core has been in effect since the fall of 2012, and the rules apply to every public college and university in the state.</p>
 
         <p>Twenty-four public colleges and universities take part:</p>
-        <div class="inst-list">
-          <span class="inst-chip">EKU</span>
-          <span class="inst-chip">KCTCS</span>
-          <span class="inst-chip">KSU</span>
-          <span class="inst-chip">Morehead State</span>
-          <span class="inst-chip">Murray State</span>
-          <span class="inst-chip">NKU</span>
-          <span class="inst-chip">UK</span>
-          <span class="inst-chip">UofL</span>
-          <span class="inst-chip">WKU</span>
+
+        <div class="inst-group">
+          <div class="inst-group__label">The 8 four-year universities</div>
+          <div class="inst-list">
+            <span class="inst-chip">EKU</span>
+            <span class="inst-chip">KSU</span>
+            <span class="inst-chip">Morehead State</span>
+            <span class="inst-chip">Murray State</span>
+            <span class="inst-chip">NKU</span>
+            <span class="inst-chip">UK</span>
+            <span class="inst-chip">UofL</span>
+            <span class="inst-chip">WKU</span>
+          </div>
+        </div>
+
+        <div class="inst-group">
+          <div class="inst-group__label">The 16 KCTCS community and technical colleges</div>
+          <div class="inst-list">
+            <span class="inst-chip">Ashland</span>
+            <span class="inst-chip">Big Sandy</span>
+            <span class="inst-chip">Bluegrass</span>
+            <span class="inst-chip">Elizabethtown</span>
+            <span class="inst-chip">Gateway</span>
+            <span class="inst-chip">Hazard</span>
+            <span class="inst-chip">Henderson</span>
+            <span class="inst-chip">Hopkinsville</span>
+            <span class="inst-chip">Jefferson</span>
+            <span class="inst-chip">Madisonville</span>
+            <span class="inst-chip">Maysville</span>
+            <span class="inst-chip">Owensboro</span>
+            <span class="inst-chip">Somerset</span>
+            <span class="inst-chip">Southcentral Kentucky</span>
+            <span class="inst-chip">Southeast Kentucky</span>
+            <span class="inst-chip">West Kentucky</span>
+          </div>
         </div>
 
         <p style="margin-top:24px;">More about the agreement. First, the general education core is organized into <strong>five subject categories</strong>: communication (writing and speaking), math and statistics, sciences, social sciences (like psychology, sociology, and history), and arts and humanities. Second, each category has a set of student learning outcomes or the <strong>skills students should walk away with</strong> from classes in each category. Third — and this is the important one — the policy guarantees that <strong>if a student takes a class at one of Kentucky's public colleges that meets those skills and is designated by the institution as general education, all the others will count it</strong> as if the student had taken the general education course at their institution.</p>
@@ -2477,14 +2513,14 @@ p { margin: 0 0 1em; }
 
         <div class="quiz__q" data-q="q1" data-correct="a">
           <div class="quiz__q-num">Question 1 of 5 · true or false</div>
-          <div class="quiz__prompt">The Gen Ed Core is an agreement among <em>nine</em> Kentucky public colleges and universities.</div>
+          <div class="quiz__prompt">The Gen Ed Core is an agreement among <em>twenty-four</em> Kentucky public colleges and universities.</div>
           <div class="quiz__opts">
             <button class="quiz__opt" data-opt="a"><span class="quiz__opt-dot"></span><span>True</span></button>
             <button class="quiz__opt" data-opt="b"><span class="quiz__opt-dot"></span><span>False</span></button>
           </div>
           <div class="quiz__feedback">
             <div class="quiz__feedback-head"></div>
-            <div class="quiz__feedback-body"><strong>True.</strong> EKU, KCTCS, KSU, Morehead State, Murray State, NKU, UK, UofL, and WKU all participate.</div>
+            <div class="quiz__feedback-body"><strong>True.</strong> EKU, KSU, Morehead State, Murray State, NKU, UK, UofL, and WKU &mdash; plus the 16 KCTCS community and technical colleges &mdash; all participate.</div>
           </div>
         </div>
 
